@@ -1,0 +1,15 @@
+STATO: NON PRONTO PER UN NUOVO RILASCIO
+
+Base: BeatPilot 0.1.9-holdtails, versionCode 10.
+Correzione parziale: conservazione dello stato durante un'incertezza breve dell'interfaccia, con sospensione dei nuovi invii.
+
+Eseguito:
+- Riproduzione negativa sulla base originale: nota cancellata dopo un fotogramma incerto; hold successivo scartato in ciascuna delle tre corsie; sovrapposizione sintetica freccia/tocco da 40 ms.
+- Verifica della correzione: una nota conservata e pianificata una sola volta all'istante previsto; continuità di un hold; limite temporale dell'incertezza e protezioni di uscita.
+- Suite storiche: superate. Il vecchio caso che accettava la scomparsa di una nota non è più considerato un successo.
+- Controlli di affidabilità complessivi: FALLITI, restano tre casi di hold e un caso sintetico di sovrapposizione. La compilazione distributiva è bloccata da questi esiti.
+- Collegamento delle risorse e compilazione Java di tutti i sorgenti con Android SDK API 35: superati.
+
+Non eseguito: DEX/firma di un nuovo APK, installazione/esecuzione su Android, misura dei tocchi ricevuti dal gioco, conteggio Perfect+, copertura universale dei tipi di nota.
+
+Le nuove segnalazioni dell'utente non hanno nuove registrazioni: i casi sintetici individuano difetti del codice, non provano la causa di ciascuna nuova partita fallita.

@@ -1,0 +1,47 @@
+name: Build BeatPilot APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK 35
+        run: sdkmanager 'platform-tools' 'platforms;android-35' 'build-tools;35.0.0'
+
+      - name: Run BeatPilot checks
+        run: python3 tools/check.py
+
+      - name: Build APK
+        run: python3 tools/build_apk.py
+
+      - name: Locate APK
+        id: apk
+        shell: bash
+        run: |
+          APK=$(find . -type f -name '*.apk' | head -n 1)
+          test -n "$APK"
+          echo "path=$APK" >> "$GITHUB_OUTPUT"
+          cp "$APK" BeatPilot-0.1.10-reliability.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: BeatPilot-0.1.10-reliability
+          path: BeatPilot-0.1.10-reliability.apk
+          if-no-files-found: error

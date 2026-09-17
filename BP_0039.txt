@@ -1,0 +1,95 @@
+VERIFICA BEATPILOT 0.1.9-HOLDTAILS
+Data: 17 settembre 2026
+
+BASE ED EVIDENZA
+Sorgenti della 0.1.8-contacts consegnata. Nuovi allegati:
+BeatPilot_20260917_120645_572.mp4 + JSON, samsung SM-S948B/API 36,
+anticipo 0 ms, linea .721, corsie .205/.5/.795, profilo video attivo.
+Video 480 x 1040, 4356 frame, circa 75,5 s; 4261 eventi vision.
+Zero frame scartati per encoder occupato, zero eventi trace persi.
+277 richieste accettate, 276 completate, una cancellata (batch 277).
+Nel filmato sono visibili pressioni riuscite e Perfect+; non e' stato
+conteggiato automaticamente ogni giudizio del brano.
+
+CASO DI ERRORE
+La HOLD 309 sinistra parte a 71039 ms. La coda compare soltanto in due
+rilevamenti dal vivo (70899/70916 ms), insufficienti per programmare la fine.
+La punta luminosa rientra nello stelo bianco e non supera il controllo
+precedente, che richiedeva un cappuccio meno luminoso dello stelo.
+Il TAP destro a 71518 ms viene inviato, ma il dito sinistro resta attivo.
+La nuova HOLD 312 a 71759 ms viene ignorata per la corsia occupata.
+Il gesto inviato a 71749 ms contiene soltanto una continuazione immobile
+con willContinue=true. Non genera MotionEvents: il comportamento AOSP
+corrisponde alla cancellazione ricevuta a 71750 ms. Dopo l'arresto il
+video mostra FAILED TO HOLD.
+
+MODIFICHE
+- HoldDetector riconosce anche una punta luminosa piu' larga dello stelo.
+  Richiede base a T valida, stelo, spalla breve e spazio libero sopra.
+  Le vecchie punte scure mantengono il riconoscimento precedente.
+- La nuova osservazione e' contrassegnata recovered. Tracker puo' usarla
+  per raggiungere il numero minimo di campioni o correggere una previsione
+  incoerente. Mantiene invece un rilascio gia' stabilito con errore di fit
+  <= .001 e rapporto fra le ultime due velocita' <= 1.35, entrambe positive.
+  Questi criteri verificano coerenza visiva, non un Perfect+ del gioco.
+- Il pianificatore non invia continuazioni completamente stazionarie senza
+  inizi o rilasci: mantiene lo stato e attende un evento utile. Non inventa
+  un rilascio nel caso in cui la coda non sia mai riconosciuta.
+- Conservate le protezioni 0.1.8 per rilascio/inizio simultanei, piu' dita,
+  callback tardive e note consecutive nella stessa corsia.
+- Versioni di schermata, resoconto, Gradle e APK aggiornate alla 0.1.9.
+
+VERIFICHE ESEGUITE
+- tools/check.py: 6284 asserzioni, incluse tutte le 6016 precedenti e 268
+  nuove verifiche di punte luminose, tracciamento e contratti dei contatti.
+  Parsing di 26 sorgenti Java e 4 XML; nessun permesso Internet.
+- Prima della modifica il controllo sul frame 071000.gray fallisce per
+  mancato riconoscimento della punta. Dopo la modifica passa.
+- Nessuna falsa HOLD sui 117 precedenti campioni reali di altre note/UI.
+- Test in tre corsie con luminosita' del cappuccio 175/224/225/226/245/255.
+- Sequenza reale: inizio 71039, rilascio 71507, nuova pressione 71759 ms;
+  callback ritardate di 0/5/17 ms, nessuna omissione della seconda pressione.
+- Due osservazioni dal JSON piu' nuovi campioni luminosi dai frame recuperano
+  una sola coda, rilascio 71507 ms. Una previsione gia' stabile non cambia.
+- Per la successiva coda provvisoria, gli intervalli incoerenti del JSON
+  sono riprodotti e la fine viene corretta a 72225 ms senza duplicazione.
+- Replay completo con base 0.1.8 e versione finale 0.1.9: 4356 frame per
+  versione, 3966 frame gameplay. Rilevamenti ripetuti: 7362 e 7523.
+  In entrambe: 301 eventi iniziali, 146 revisioni. Tutte le 447 righe di
+  previsione sono identiche ignorando gli ID interni, comprese le 294
+  righe di note diverse da HOLD_END. Il codice precedente e i campioni
+  delle regressioni su velocita', temi e frecce restano verificati.
+- Risorse Android, Java e DEX compilati; firma v3 e allineamento verificati.
+  Manifest: it.dave.beatpilot, versionCode 10, 0.1.9-holdtails,
+  minSdk 34, targetSdk 35. Certificato identico alla versione precedente.
+
+DISTINZIONE FONDAMENTALE E LIMITI
+La compressione del video cambia alcuni pixel: la 0.1.8 sul replay trova
+un terzo campione della coda che il JSON dal vivo non contiene. Percio'
+il replay del solo MP4 non riproduce l'arresto osservato. La regressione
+usa anche le osservazioni sparse reali; il file fixtures README distingue
+chiaramente i dati dal vivo dai pixel ricavati dal video.
+Nessun APK eseguito su telefono/emulatore qui. Nessun nuovo punteggio o
+Perfect+ misurato. L'assenza di modifiche ai tempi del replay non certifica
+il 100% su qualsiasi livello. Una coda mai riconosciuta puo' ancora causare
+una nota persa; il filtro dei gesti vuoti non sostituisce il riconoscimento.
+Il supporto riguarda le note lunghe dritte osservate. Pressione + freccia
+finale e varianti non documentate restano da implementare/verificare.
+Prova successiva: stesso brano, anticipo 0 ms, registrazione interna;
+verificare il passaggio 71-73 s e il seguito, conservando MP4 e JSON.
+
+RIPRODUCIBILITA'
+tests/HoldTailTests.java e tests/fixtures/holds/bright-caps.
+tests/replay-019: replay base/finale e confronto. Le altre cartelle replay
+sono evidenza storica, non nuove esecuzioni di questa versione.
+LEGGIMI.md: installazione, registrazione e compilazione.
+Video e JSON integrali non inclusi nell'archivio ne' pubblicati.
+
+APK
+file: BeatPilot-0.1.9-holdtails.apk
+package: it.dave.beatpilot
+versionCode: 10
+versionName: 0.1.9-holdtails
+SHA-256: f07a67f10da52d6fc380e8ab4fda5c4d8182bd4df7d023344b39968419c29b03
+Certificato SHA-256:
+4f5cf9cd13c1a9af3052bcc21d9947e744a2030c216d27a339584e13ca1e1848

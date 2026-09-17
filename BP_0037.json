@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-17",
+  "baseline_filename": "BeatPilot-0.1.9-sorgenti.zip",
+  "baseline_sha256": "565e2e1de0d59532b0a6056cd58cd4cfadbf1ca4c32f9f1a11b0bb2f630cd695",
+  "status": "partial fix; release blocked by known failing tests",
+  "modified_or_added_files": [
+    "LEGGIMI.md",
+    "VERIFICA.txt",
+    "app/src/main/java/it/dave/beatpilot/CaptureService.java",
+    "app/src/main/java/it/dave/beatpilot/TouchService.java",
+    "app/src/main/java/it/dave/beatpilot/core/GameplayGate.java",
+    "tests/HoldTailTests.java",
+    "tests/ReliabilityAudit.java",
+    "tests/SceneContinuityTests.java",
+    "tools/build_apk.py",
+    "tools/check.py"
+  ],
+  "phone_execution": false,
+  "new_apk_delivered": false
+}

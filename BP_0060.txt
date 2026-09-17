@@ -1,0 +1,44 @@
+PASS: visual matching, brightness, multi-lane, blank rejection, template serialization
+PASS: synthetic pixels -> detection -> tracking -> one timed hit (8 ms test tolerance)
+PASS: 45 timed notes, frame jitter/drop, anticipation, stationary UI, stale-track reset
+PASS: simultaneous taps, held pointer continuity, overlapping tap, scheduled hold release
+PASS: swipe endpoints after callback delay, stop/queue reset, stale taps, late releases
+SUCCESS: 118 assertions. Synthetic inputs only; no Android/device/game validation.
+PASS: 70 assertions on 19 real frames and blank screen.
+PASS: 48 recording assertions: RGBA strides, timestamps, bounded concurrent trace, gesture correlation.
+Recorded missed LEFT now planned at 71082 ms (first ready 71034).
+PASS: 757 timing/conversion/start regression assertions. No live game score measured.
+PASS: 50 assertions on 32 consecutive real rapid-note frames; three distinct taps at [84967, 85082, 85195] ms. No game score inferred.
+PASS: 221 dark-stage / transition assertions on 46 recorded frames, recovered UP and double TAP, plus real DOWN recognition.
+Recovered live-missed LEFT at 84057 ms; ready 84024; 5 pixel confirmations.
+Du hast queued-pause correction (live): 70952 -> 70961 ms.
+Du hast queued-pause correction (encoded): 70948 -> 70962 ms.
+PASS: 56 precision/recovery/gesture assertions. No Perfect+ scores inferred.
+Recorded hold: down 6644, up 7143; neighbouring tap 7123 ms.
+Rejected false holds on 117 previous real frames.
+PASS: 316 hold recognition/continuity/release assertions. No game score inferred.
+Live trace, sample 8 ms: 33 batches; baseline bad index at 16401; fixed tap 16401, release 16402.
+Live trace, sample 16 ms: 33 batches; baseline bad index at 16401; fixed tap 16401, release 16402.
+PASS: 4380 Android pointer contract assertions. No device/game score inferred.
+Consecutive recorded holds: first down 71039, release 71507, next down 71759 ms.
+Sparse live tail recovered from bright frames; final release 71507 ms.
+Unstable live tail refined to 72225 ms without a duplicate release.
+PASS: 268 bright hold-tail and pointer regression assertions. No game scores inferred.
+PASS: scene continuity preserves one predicted tap and a held contact; uncertainty and exit remain bounded. No device score inferred.
+CONTROL PASS: uninterrupted HUD: tap at 1100 ms
+PASS: queued tap survives one missing HUD frame; expected one DOWN at 1100; planned starts=1; first=1100; next=NONE; idle=true
+CONTROL PASS: known hold end allows next hold, lane 1
+FAIL: missing hold end silently consumes next hold, lane 1; expected one DOWN at 71759; planned starts=0; first=-1; next=NONE; idle=false
+CONTROL PASS: known hold end allows next hold, lane 2
+FAIL: missing hold end silently consumes next hold, lane 2; expected one DOWN at 71759; planned starts=0; first=-1; next=NONE; idle=false
+CONTROL PASS: known hold end allows next hold, lane 3
+FAIL: missing hold end silently consumes next hold, lane 3; expected one DOWN at 71759; planned starts=0; first=-1; next=NONE; idle=false
+FAIL: 40 ms same-lane swipe/tap overlap (synthetic); expected one DOWN at 1040; planned starts=0; first=-1; next=NONE; idle=true
+RESULT: 4 positive controls passed; 4 failed behavior checks. No device execution or Perfect+ score inferred.
+PASS: Java syntax for 26 source files (no Android symbol resolution)
+PASS: 4 XML files parse correctly (no resource linking)
+PASS: app declares no Internet permission
+APK build and physical-device tests NOT performed by this check.
+BLOCKED: unresolved note-loss cases; this revision is not ready for release.
+
+EXIT_CODE=1

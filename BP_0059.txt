@@ -1,0 +1,12 @@
+CONTROL PASS: uninterrupted HUD: tap at 1100 ms
+FAIL: queued tap survives one missing HUD frame; expected one DOWN at 1100; planned starts=0; first=-1; next=NONE; idle=true
+CONTROL PASS: known hold end allows next hold, lane 1
+FAIL: missing hold end silently consumes next hold, lane 1; expected one DOWN at 71759; planned starts=0; first=-1; next=NONE; idle=false
+CONTROL PASS: known hold end allows next hold, lane 2
+FAIL: missing hold end silently consumes next hold, lane 2; expected one DOWN at 71759; planned starts=0; first=-1; next=NONE; idle=false
+CONTROL PASS: known hold end allows next hold, lane 3
+FAIL: missing hold end silently consumes next hold, lane 3; expected one DOWN at 71759; planned starts=0; first=-1; next=NONE; idle=false
+FAIL: 40 ms same-lane swipe/tap overlap (synthetic); expected one DOWN at 1040; planned starts=0; first=-1; next=NONE; idle=true
+RESULT: 4 positive controls passed; 5 failed behavior checks. No device execution or Perfect+ score inferred.
+
+EXIT_CODE=1

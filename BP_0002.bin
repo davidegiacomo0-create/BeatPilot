@@ -1,0 +1,14 @@
+# Signing keys / credentials
+signing/
+*.jks
+*.keystore
+
+# Android / Gradle local output
+.gradle/
+**/build/
+local.properties
+
+# IDE / OS
+.idea/
+*.iml
+.DS_Store
