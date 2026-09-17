@@ -1,0 +1,25 @@
+{
+  "version": "0.1.8-contacts",
+  "date": "2026-09-17",
+  "check_command": "python3 tools/check.py",
+  "prior_assertions": 1636,
+  "contact_assertions": 4380,
+  "total_assertions": 6016,
+  "baseline_negative_control": "FAIL at t=16401 note=33 index=1 count=1 before production patch",
+  "recording_batches": 33,
+  "prediction_and_revision_events": 158,
+  "sample_intervals_ms": [
+    8,
+    16
+  ],
+  "fixed_tap_ms": 16401,
+  "fixed_hold_release_ms": 16402,
+  "other_recorded_starts_and_paths_unchanged": true,
+  "java_files_parsed": 26,
+  "xml_files_parsed": 4,
+  "android_build": "PASS resources, Java, DEX, zipalign and v3 signature",
+  "apk_sha256": "912575709394f524b2d900dc84ff08d4a6c41c20542b2232a832d1e919b0bf32",
+  "device_or_emulator_run": false,
+  "perfect_plus_score_measured": false,
+  "video_baseline_note": "Replay from unmodified 0.1.7 detector; detector source unchanged in 0.1.8. Historical replays are not new 0.1.8 runs."
+}

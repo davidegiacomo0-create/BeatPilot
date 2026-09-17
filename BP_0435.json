@@ -1,0 +1,39 @@
+{
+  "original_normal_notes": 108,
+  "new_predicted_notes": 113,
+  "matched": 108,
+  "maximum_due_difference_ms": 2,
+  "missing": [],
+  "additional": [
+    {
+      "lane": 2,
+      "kind": "UP",
+      "due": 21102,
+      "time": 21057
+    },
+    {
+      "lane": 1,
+      "kind": "DOWN",
+      "due": 21341,
+      "time": 21291
+    },
+    {
+      "lane": 2,
+      "kind": "TAP",
+      "due": 66157,
+      "time": 66141
+    },
+    {
+      "lane": 3,
+      "kind": "TAP",
+      "due": 66159,
+      "time": 66108
+    },
+    {
+      "lane": 1,
+      "kind": "TAP",
+      "due": 66534,
+      "time": 66508
+    }
+  ]
+}

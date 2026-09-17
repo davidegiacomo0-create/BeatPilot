@@ -1,0 +1,2054 @@
+[
+  {
+    "payload": "BP_0001.yml",
+    "path": ".github/workflows/build-apk.yml"
+  },
+  {
+    "payload": "BP_0002.bin",
+    "path": ".gitignore"
+  },
+  {
+    "payload": "BP_0003.md",
+    "path": "LEGGIMI.md"
+  },
+  {
+    "payload": "BP_0004.txt",
+    "path": "VERIFICA.txt"
+  },
+  {
+    "payload": "BP_0005.gradle",
+    "path": "app/build.gradle"
+  },
+  {
+    "payload": "BP_0006.xml",
+    "path": "app/src/main/AndroidManifest.xml"
+  },
+  {
+    "payload": "BP_0007.java",
+    "path": "app/src/main/java/it/dave/beatpilot/CaptureService.java"
+  },
+  {
+    "payload": "BP_0008.java",
+    "path": "app/src/main/java/it/dave/beatpilot/EncoderSurface.java"
+  },
+  {
+    "payload": "BP_0009.java",
+    "path": "app/src/main/java/it/dave/beatpilot/LearnActivity.java"
+  },
+  {
+    "payload": "BP_0010.java",
+    "path": "app/src/main/java/it/dave/beatpilot/MainActivity.java"
+  },
+  {
+    "payload": "BP_0011.java",
+    "path": "app/src/main/java/it/dave/beatpilot/RecordingStore.java"
+  },
+  {
+    "payload": "BP_0012.java",
+    "path": "app/src/main/java/it/dave/beatpilot/SettingsStore.java"
+  },
+  {
+    "payload": "BP_0013.java",
+    "path": "app/src/main/java/it/dave/beatpilot/TouchService.java"
+  },
+  {
+    "payload": "BP_0014.java",
+    "path": "app/src/main/java/it/dave/beatpilot/Ui.java"
+  },
+  {
+    "payload": "BP_0015.java",
+    "path": "app/src/main/java/it/dave/beatpilot/VideoRecorder.java"
+  },
+  {
+    "payload": "BP_0016.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/ArrowMasks.java"
+  },
+  {
+    "payload": "BP_0017.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/BeatstarDetector.java"
+  },
+  {
+    "payload": "BP_0018.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/Detector.java"
+  },
+  {
+    "payload": "BP_0019.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/FrameClock.java"
+  },
+  {
+    "payload": "BP_0020.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/GameplayGate.java"
+  },
+  {
+    "payload": "BP_0021.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/GestureTiming.java"
+  },
+  {
+    "payload": "BP_0022.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/GrayFrame.java"
+  },
+  {
+    "payload": "BP_0023.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/HoldDetector.java"
+  },
+  {
+    "payload": "BP_0024.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/HoldTiming.java"
+  },
+  {
+    "payload": "BP_0025.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/Kind.java"
+  },
+  {
+    "payload": "BP_0026.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/NotePattern.java"
+  },
+  {
+    "payload": "BP_0027.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/RecordingFrames.java"
+  },
+  {
+    "payload": "BP_0028.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/RgbaToGray.java"
+  },
+  {
+    "payload": "BP_0029.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/StartGate.java"
+  },
+  {
+    "payload": "BP_0030.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/TouchPlanner.java"
+  },
+  {
+    "payload": "BP_0031.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/TraceBuffer.java"
+  },
+  {
+    "payload": "BP_0032.java",
+    "path": "app/src/main/java/it/dave/beatpilot/core/Tracker.java"
+  },
+  {
+    "payload": "BP_0033.xml",
+    "path": "app/src/main/res/drawable/ic_note.xml"
+  },
+  {
+    "payload": "BP_0034.xml",
+    "path": "app/src/main/res/values/strings.xml"
+  },
+  {
+    "payload": "BP_0035.xml",
+    "path": "app/src/main/res/xml/accessibility_service.xml"
+  },
+  {
+    "payload": "BP_0036.md",
+    "path": "audit/LEGGIMI-0.1.9-storico.md"
+  },
+  {
+    "payload": "BP_0037.json",
+    "path": "audit/PROVENIENZA.json"
+  },
+  {
+    "payload": "BP_0038.java",
+    "path": "audit/ReliabilityAudit.java"
+  },
+  {
+    "payload": "BP_0039.txt",
+    "path": "audit/VERIFICA-0.1.9-storico.txt"
+  },
+  {
+    "payload": "BP_0040.java",
+    "path": "audit/baseline-CaptureService.java"
+  },
+  {
+    "payload": "BP_0041.java",
+    "path": "audit/baseline-TouchService.java"
+  },
+  {
+    "payload": "BP_0042.java",
+    "path": "audit/baseline-core/ArrowMasks.java"
+  },
+  {
+    "payload": "BP_0043.java",
+    "path": "audit/baseline-core/BeatstarDetector.java"
+  },
+  {
+    "payload": "BP_0044.java",
+    "path": "audit/baseline-core/Detector.java"
+  },
+  {
+    "payload": "BP_0045.java",
+    "path": "audit/baseline-core/FrameClock.java"
+  },
+  {
+    "payload": "BP_0046.java",
+    "path": "audit/baseline-core/GameplayGate.java"
+  },
+  {
+    "payload": "BP_0047.java",
+    "path": "audit/baseline-core/GestureTiming.java"
+  },
+  {
+    "payload": "BP_0048.java",
+    "path": "audit/baseline-core/GrayFrame.java"
+  },
+  {
+    "payload": "BP_0049.java",
+    "path": "audit/baseline-core/HoldDetector.java"
+  },
+  {
+    "payload": "BP_0050.java",
+    "path": "audit/baseline-core/HoldTiming.java"
+  },
+  {
+    "payload": "BP_0051.java",
+    "path": "audit/baseline-core/Kind.java"
+  },
+  {
+    "payload": "BP_0052.java",
+    "path": "audit/baseline-core/NotePattern.java"
+  },
+  {
+    "payload": "BP_0053.java",
+    "path": "audit/baseline-core/RecordingFrames.java"
+  },
+  {
+    "payload": "BP_0054.java",
+    "path": "audit/baseline-core/RgbaToGray.java"
+  },
+  {
+    "payload": "BP_0055.java",
+    "path": "audit/baseline-core/StartGate.java"
+  },
+  {
+    "payload": "BP_0056.java",
+    "path": "audit/baseline-core/TouchPlanner.java"
+  },
+  {
+    "payload": "BP_0057.java",
+    "path": "audit/baseline-core/TraceBuffer.java"
+  },
+  {
+    "payload": "BP_0058.java",
+    "path": "audit/baseline-core/Tracker.java"
+  },
+  {
+    "payload": "BP_0059.txt",
+    "path": "audit/baseline.txt"
+  },
+  {
+    "payload": "BP_0060.txt",
+    "path": "audit/candidate.txt"
+  },
+  {
+    "payload": "BP_0061.patch",
+    "path": "audit/changes.patch"
+  },
+  {
+    "payload": "BP_0062.txt",
+    "path": "audit/compile-validation.txt"
+  },
+  {
+    "payload": "BP_0063.py",
+    "path": "audit/run.py"
+  },
+  {
+    "payload": "BP_0064.gradle",
+    "path": "build.gradle"
+  },
+  {
+    "payload": "BP_0065.properties",
+    "path": "gradle.properties"
+  },
+  {
+    "payload": "BP_0066.gradle",
+    "path": "settings.gradle"
+  },
+  {
+    "payload": "BP_0067.java",
+    "path": "tests/ContactTests.java"
+  },
+  {
+    "payload": "BP_0068.java",
+    "path": "tests/CoreTests.java"
+  },
+  {
+    "payload": "BP_0069.java",
+    "path": "tests/HoldTailTests.java"
+  },
+  {
+    "payload": "BP_0070.java",
+    "path": "tests/HoldTests.java"
+  },
+  {
+    "payload": "BP_0071.java",
+    "path": "tests/PrecisionTests.java"
+  },
+  {
+    "payload": "BP_0072.java",
+    "path": "tests/RapidNotesTests.java"
+  },
+  {
+    "payload": "BP_0073.java",
+    "path": "tests/RecordedFrameTests.java"
+  },
+  {
+    "payload": "BP_0074.java",
+    "path": "tests/RecordingTests.java"
+  },
+  {
+    "payload": "BP_0075.java",
+    "path": "tests/ReliabilityAudit.java"
+  },
+  {
+    "payload": "BP_0076.java",
+    "path": "tests/SceneContinuityTests.java"
+  },
+  {
+    "payload": "BP_0077.java",
+    "path": "tests/ThemeRegressionTests.java"
+  },
+  {
+    "payload": "BP_0078.java",
+    "path": "tests/TimingRegressionTests.java"
+  },
+  {
+    "payload": "BP_0079.java",
+    "path": "tests/VideoReplay.java"
+  },
+  {
+    "payload": "BP_0080.gray",
+    "path": "tests/fixtures/000000.gray"
+  },
+  {
+    "payload": "BP_0081.gray",
+    "path": "tests/fixtures/006500.gray"
+  },
+  {
+    "payload": "BP_0082.gray",
+    "path": "tests/fixtures/012000.gray"
+  },
+  {
+    "payload": "BP_0083.gray",
+    "path": "tests/fixtures/016412.gray"
+  },
+  {
+    "payload": "BP_0084.gray",
+    "path": "tests/fixtures/023750.gray"
+  },
+  {
+    "payload": "BP_0085.gray",
+    "path": "tests/fixtures/028950.gray"
+  },
+  {
+    "payload": "BP_0086.gray",
+    "path": "tests/fixtures/032450.gray"
+  },
+  {
+    "payload": "BP_0087.gray",
+    "path": "tests/fixtures/036000.gray"
+  },
+  {
+    "payload": "BP_0088.gray",
+    "path": "tests/fixtures/037950.gray"
+  },
+  {
+    "payload": "BP_0089.gray",
+    "path": "tests/fixtures/042750.gray"
+  },
+  {
+    "payload": "BP_0090.gray",
+    "path": "tests/fixtures/049450.gray"
+  },
+  {
+    "payload": "BP_0091.gray",
+    "path": "tests/fixtures/060250.gray"
+  },
+  {
+    "payload": "BP_0092.gray",
+    "path": "tests/fixtures/066850.gray"
+  },
+  {
+    "payload": "BP_0093.gray",
+    "path": "tests/fixtures/070500.gray"
+  },
+  {
+    "payload": "BP_0094.gray",
+    "path": "tests/fixtures/072250.gray"
+  },
+  {
+    "payload": "BP_0095.md",
+    "path": "tests/fixtures/README.md"
+  },
+  {
+    "payload": "BP_0096.csv",
+    "path": "tests/fixtures/bot_last_arrow.csv"
+  },
+  {
+    "payload": "BP_0097.gray",
+    "path": "tests/fixtures/bot_left_glow.gray"
+  },
+  {
+    "payload": "BP_0098.gray",
+    "path": "tests/fixtures/bot_left_past_line.gray"
+  },
+  {
+    "payload": "BP_0099.gray",
+    "path": "tests/fixtures/bot_start_grey.gray"
+  },
+  {
+    "payload": "BP_0100.gray",
+    "path": "tests/fixtures/bot_start_pulse.gray"
+  },
+  {
+    "payload": "BP_0101.md",
+    "path": "tests/fixtures/contacts/README.md"
+  },
+  {
+    "payload": "BP_0102.csv",
+    "path": "tests/fixtures/contacts/batches.csv"
+  },
+  {
+    "payload": "BP_0103.csv",
+    "path": "tests/fixtures/contacts/hits.csv"
+  },
+  {
+    "payload": "BP_0104.csv",
+    "path": "tests/fixtures/contacts/segments.csv"
+  },
+  {
+    "payload": "BP_0105.json",
+    "path": "tests/fixtures/contacts/source.json"
+  },
+  {
+    "payload": "BP_0106.md",
+    "path": "tests/fixtures/holds/README.md"
+  },
+  {
+    "payload": "BP_0107.gray",
+    "path": "tests/fixtures/holds/bright-caps/069501.gray"
+  },
+  {
+    "payload": "BP_0108.gray",
+    "path": "tests/fixtures/holds/bright-caps/069517.gray"
+  },
+  {
+    "payload": "BP_0109.gray",
+    "path": "tests/fixtures/holds/bright-caps/069533.gray"
+  },
+  {
+    "payload": "BP_0110.gray",
+    "path": "tests/fixtures/holds/bright-caps/069550.gray"
+  },
+  {
+    "payload": "BP_0111.gray",
+    "path": "tests/fixtures/holds/bright-caps/069566.gray"
+  },
+  {
+    "payload": "BP_0112.gray",
+    "path": "tests/fixtures/holds/bright-caps/069583.gray"
+  },
+  {
+    "payload": "BP_0113.gray",
+    "path": "tests/fixtures/holds/bright-caps/069600.gray"
+  },
+  {
+    "payload": "BP_0114.gray",
+    "path": "tests/fixtures/holds/bright-caps/069617.gray"
+  },
+  {
+    "payload": "BP_0115.gray",
+    "path": "tests/fixtures/holds/bright-caps/069633.gray"
+  },
+  {
+    "payload": "BP_0116.gray",
+    "path": "tests/fixtures/holds/bright-caps/069650.gray"
+  },
+  {
+    "payload": "BP_0117.gray",
+    "path": "tests/fixtures/holds/bright-caps/069666.gray"
+  },
+  {
+    "payload": "BP_0118.gray",
+    "path": "tests/fixtures/holds/bright-caps/069683.gray"
+  },
+  {
+    "payload": "BP_0119.gray",
+    "path": "tests/fixtures/holds/bright-caps/069700.gray"
+  },
+  {
+    "payload": "BP_0120.gray",
+    "path": "tests/fixtures/holds/bright-caps/069717.gray"
+  },
+  {
+    "payload": "BP_0121.gray",
+    "path": "tests/fixtures/holds/bright-caps/069733.gray"
+  },
+  {
+    "payload": "BP_0122.gray",
+    "path": "tests/fixtures/holds/bright-caps/069750.gray"
+  },
+  {
+    "payload": "BP_0123.gray",
+    "path": "tests/fixtures/holds/bright-caps/069766.gray"
+  },
+  {
+    "payload": "BP_0124.gray",
+    "path": "tests/fixtures/holds/bright-caps/069783.gray"
+  },
+  {
+    "payload": "BP_0125.gray",
+    "path": "tests/fixtures/holds/bright-caps/069800.gray"
+  },
+  {
+    "payload": "BP_0126.gray",
+    "path": "tests/fixtures/holds/bright-caps/069817.gray"
+  },
+  {
+    "payload": "BP_0127.gray",
+    "path": "tests/fixtures/holds/bright-caps/069833.gray"
+  },
+  {
+    "payload": "BP_0128.gray",
+    "path": "tests/fixtures/holds/bright-caps/069849.gray"
+  },
+  {
+    "payload": "BP_0129.gray",
+    "path": "tests/fixtures/holds/bright-caps/069866.gray"
+  },
+  {
+    "payload": "BP_0130.gray",
+    "path": "tests/fixtures/holds/bright-caps/069883.gray"
+  },
+  {
+    "payload": "BP_0131.gray",
+    "path": "tests/fixtures/holds/bright-caps/069900.gray"
+  },
+  {
+    "payload": "BP_0132.gray",
+    "path": "tests/fixtures/holds/bright-caps/069917.gray"
+  },
+  {
+    "payload": "BP_0133.gray",
+    "path": "tests/fixtures/holds/bright-caps/069933.gray"
+  },
+  {
+    "payload": "BP_0134.gray",
+    "path": "tests/fixtures/holds/bright-caps/069950.gray"
+  },
+  {
+    "payload": "BP_0135.gray",
+    "path": "tests/fixtures/holds/bright-caps/069967.gray"
+  },
+  {
+    "payload": "BP_0136.gray",
+    "path": "tests/fixtures/holds/bright-caps/069983.gray"
+  },
+  {
+    "payload": "BP_0137.gray",
+    "path": "tests/fixtures/holds/bright-caps/069999.gray"
+  },
+  {
+    "payload": "BP_0138.gray",
+    "path": "tests/fixtures/holds/bright-caps/070016.gray"
+  },
+  {
+    "payload": "BP_0139.gray",
+    "path": "tests/fixtures/holds/bright-caps/070033.gray"
+  },
+  {
+    "payload": "BP_0140.gray",
+    "path": "tests/fixtures/holds/bright-caps/070050.gray"
+  },
+  {
+    "payload": "BP_0141.gray",
+    "path": "tests/fixtures/holds/bright-caps/070067.gray"
+  },
+  {
+    "payload": "BP_0142.gray",
+    "path": "tests/fixtures/holds/bright-caps/070083.gray"
+  },
+  {
+    "payload": "BP_0143.gray",
+    "path": "tests/fixtures/holds/bright-caps/070100.gray"
+  },
+  {
+    "payload": "BP_0144.gray",
+    "path": "tests/fixtures/holds/bright-caps/070117.gray"
+  },
+  {
+    "payload": "BP_0145.gray",
+    "path": "tests/fixtures/holds/bright-caps/070133.gray"
+  },
+  {
+    "payload": "BP_0146.gray",
+    "path": "tests/fixtures/holds/bright-caps/070149.gray"
+  },
+  {
+    "payload": "BP_0147.gray",
+    "path": "tests/fixtures/holds/bright-caps/070168.gray"
+  },
+  {
+    "payload": "BP_0148.gray",
+    "path": "tests/fixtures/holds/bright-caps/070200.gray"
+  },
+  {
+    "payload": "BP_0149.gray",
+    "path": "tests/fixtures/holds/bright-caps/070217.gray"
+  },
+  {
+    "payload": "BP_0150.gray",
+    "path": "tests/fixtures/holds/bright-caps/070233.gray"
+  },
+  {
+    "payload": "BP_0151.gray",
+    "path": "tests/fixtures/holds/bright-caps/070250.gray"
+  },
+  {
+    "payload": "BP_0152.gray",
+    "path": "tests/fixtures/holds/bright-caps/070267.gray"
+  },
+  {
+    "payload": "BP_0153.gray",
+    "path": "tests/fixtures/holds/bright-caps/070283.gray"
+  },
+  {
+    "payload": "BP_0154.gray",
+    "path": "tests/fixtures/holds/bright-caps/070300.gray"
+  },
+  {
+    "payload": "BP_0155.gray",
+    "path": "tests/fixtures/holds/bright-caps/070316.gray"
+  },
+  {
+    "payload": "BP_0156.gray",
+    "path": "tests/fixtures/holds/bright-caps/070333.gray"
+  },
+  {
+    "payload": "BP_0157.gray",
+    "path": "tests/fixtures/holds/bright-caps/070350.gray"
+  },
+  {
+    "payload": "BP_0158.gray",
+    "path": "tests/fixtures/holds/bright-caps/070366.gray"
+  },
+  {
+    "payload": "BP_0159.gray",
+    "path": "tests/fixtures/holds/bright-caps/070383.gray"
+  },
+  {
+    "payload": "BP_0160.gray",
+    "path": "tests/fixtures/holds/bright-caps/070400.gray"
+  },
+  {
+    "payload": "BP_0161.gray",
+    "path": "tests/fixtures/holds/bright-caps/070416.gray"
+  },
+  {
+    "payload": "BP_0162.gray",
+    "path": "tests/fixtures/holds/bright-caps/070434.gray"
+  },
+  {
+    "payload": "BP_0163.gray",
+    "path": "tests/fixtures/holds/bright-caps/070450.gray"
+  },
+  {
+    "payload": "BP_0164.gray",
+    "path": "tests/fixtures/holds/bright-caps/070466.gray"
+  },
+  {
+    "payload": "BP_0165.gray",
+    "path": "tests/fixtures/holds/bright-caps/070483.gray"
+  },
+  {
+    "payload": "BP_0166.gray",
+    "path": "tests/fixtures/holds/bright-caps/070499.gray"
+  },
+  {
+    "payload": "BP_0167.gray",
+    "path": "tests/fixtures/holds/bright-caps/070516.gray"
+  },
+  {
+    "payload": "BP_0168.gray",
+    "path": "tests/fixtures/holds/bright-caps/070533.gray"
+  },
+  {
+    "payload": "BP_0169.gray",
+    "path": "tests/fixtures/holds/bright-caps/070550.gray"
+  },
+  {
+    "payload": "BP_0170.gray",
+    "path": "tests/fixtures/holds/bright-caps/070566.gray"
+  },
+  {
+    "payload": "BP_0171.gray",
+    "path": "tests/fixtures/holds/bright-caps/070583.gray"
+  },
+  {
+    "payload": "BP_0172.gray",
+    "path": "tests/fixtures/holds/bright-caps/070600.gray"
+  },
+  {
+    "payload": "BP_0173.gray",
+    "path": "tests/fixtures/holds/bright-caps/070616.gray"
+  },
+  {
+    "payload": "BP_0174.gray",
+    "path": "tests/fixtures/holds/bright-caps/070633.gray"
+  },
+  {
+    "payload": "BP_0175.gray",
+    "path": "tests/fixtures/holds/bright-caps/070650.gray"
+  },
+  {
+    "payload": "BP_0176.gray",
+    "path": "tests/fixtures/holds/bright-caps/070666.gray"
+  },
+  {
+    "payload": "BP_0177.gray",
+    "path": "tests/fixtures/holds/bright-caps/070683.gray"
+  },
+  {
+    "payload": "BP_0178.gray",
+    "path": "tests/fixtures/holds/bright-caps/070699.gray"
+  },
+  {
+    "payload": "BP_0179.gray",
+    "path": "tests/fixtures/holds/bright-caps/070716.gray"
+  },
+  {
+    "payload": "BP_0180.gray",
+    "path": "tests/fixtures/holds/bright-caps/070733.gray"
+  },
+  {
+    "payload": "BP_0181.gray",
+    "path": "tests/fixtures/holds/bright-caps/070750.gray"
+  },
+  {
+    "payload": "BP_0182.gray",
+    "path": "tests/fixtures/holds/bright-caps/070766.gray"
+  },
+  {
+    "payload": "BP_0183.gray",
+    "path": "tests/fixtures/holds/bright-caps/070783.gray"
+  },
+  {
+    "payload": "BP_0184.gray",
+    "path": "tests/fixtures/holds/bright-caps/070800.gray"
+  },
+  {
+    "payload": "BP_0185.gray",
+    "path": "tests/fixtures/holds/bright-caps/070816.gray"
+  },
+  {
+    "payload": "BP_0186.gray",
+    "path": "tests/fixtures/holds/bright-caps/070834.gray"
+  },
+  {
+    "payload": "BP_0187.gray",
+    "path": "tests/fixtures/holds/bright-caps/070851.gray"
+  },
+  {
+    "payload": "BP_0188.gray",
+    "path": "tests/fixtures/holds/bright-caps/070883.gray"
+  },
+  {
+    "payload": "BP_0189.gray",
+    "path": "tests/fixtures/holds/bright-caps/070900.gray"
+  },
+  {
+    "payload": "BP_0190.gray",
+    "path": "tests/fixtures/holds/bright-caps/070917.gray"
+  },
+  {
+    "payload": "BP_0191.gray",
+    "path": "tests/fixtures/holds/bright-caps/070933.gray"
+  },
+  {
+    "payload": "BP_0192.gray",
+    "path": "tests/fixtures/holds/bright-caps/070950.gray"
+  },
+  {
+    "payload": "BP_0193.gray",
+    "path": "tests/fixtures/holds/bright-caps/070967.gray"
+  },
+  {
+    "payload": "BP_0194.gray",
+    "path": "tests/fixtures/holds/bright-caps/070984.gray"
+  },
+  {
+    "payload": "BP_0195.gray",
+    "path": "tests/fixtures/holds/bright-caps/071000.gray"
+  },
+  {
+    "payload": "BP_0196.gray",
+    "path": "tests/fixtures/holds/bright-caps/071016.gray"
+  },
+  {
+    "payload": "BP_0197.gray",
+    "path": "tests/fixtures/holds/bright-caps/071033.gray"
+  },
+  {
+    "payload": "BP_0198.gray",
+    "path": "tests/fixtures/holds/bright-caps/071050.gray"
+  },
+  {
+    "payload": "BP_0199.gray",
+    "path": "tests/fixtures/holds/bright-caps/071067.gray"
+  },
+  {
+    "payload": "BP_0200.gray",
+    "path": "tests/fixtures/holds/bright-caps/071083.gray"
+  },
+  {
+    "payload": "BP_0201.gray",
+    "path": "tests/fixtures/holds/bright-caps/071100.gray"
+  },
+  {
+    "payload": "BP_0202.gray",
+    "path": "tests/fixtures/holds/bright-caps/071117.gray"
+  },
+  {
+    "payload": "BP_0203.gray",
+    "path": "tests/fixtures/holds/bright-caps/071134.gray"
+  },
+  {
+    "payload": "BP_0204.gray",
+    "path": "tests/fixtures/holds/bright-caps/071150.gray"
+  },
+  {
+    "payload": "BP_0205.gray",
+    "path": "tests/fixtures/holds/bright-caps/071167.gray"
+  },
+  {
+    "payload": "BP_0206.gray",
+    "path": "tests/fixtures/holds/bright-caps/071183.gray"
+  },
+  {
+    "payload": "BP_0207.gray",
+    "path": "tests/fixtures/holds/bright-caps/071200.gray"
+  },
+  {
+    "payload": "BP_0208.gray",
+    "path": "tests/fixtures/holds/bright-caps/071217.gray"
+  },
+  {
+    "payload": "BP_0209.gray",
+    "path": "tests/fixtures/holds/bright-caps/071233.gray"
+  },
+  {
+    "payload": "BP_0210.gray",
+    "path": "tests/fixtures/holds/bright-caps/071250.gray"
+  },
+  {
+    "payload": "BP_0211.gray",
+    "path": "tests/fixtures/holds/bright-caps/071266.gray"
+  },
+  {
+    "payload": "BP_0212.gray",
+    "path": "tests/fixtures/holds/bright-caps/071283.gray"
+  },
+  {
+    "payload": "BP_0213.gray",
+    "path": "tests/fixtures/holds/bright-caps/071300.gray"
+  },
+  {
+    "payload": "BP_0214.gray",
+    "path": "tests/fixtures/holds/bright-caps/071317.gray"
+  },
+  {
+    "payload": "BP_0215.gray",
+    "path": "tests/fixtures/holds/bright-caps/071333.gray"
+  },
+  {
+    "payload": "BP_0216.gray",
+    "path": "tests/fixtures/holds/bright-caps/071350.gray"
+  },
+  {
+    "payload": "BP_0217.gray",
+    "path": "tests/fixtures/holds/bright-caps/071367.gray"
+  },
+  {
+    "payload": "BP_0218.gray",
+    "path": "tests/fixtures/holds/bright-caps/071384.gray"
+  },
+  {
+    "payload": "BP_0219.gray",
+    "path": "tests/fixtures/holds/bright-caps/071400.gray"
+  },
+  {
+    "payload": "BP_0220.gray",
+    "path": "tests/fixtures/holds/bright-caps/071416.gray"
+  },
+  {
+    "payload": "BP_0221.gray",
+    "path": "tests/fixtures/holds/bright-caps/071433.gray"
+  },
+  {
+    "payload": "BP_0222.gray",
+    "path": "tests/fixtures/holds/bright-caps/071450.gray"
+  },
+  {
+    "payload": "BP_0223.gray",
+    "path": "tests/fixtures/holds/bright-caps/071467.gray"
+  },
+  {
+    "payload": "BP_0224.gray",
+    "path": "tests/fixtures/holds/bright-caps/071484.gray"
+  },
+  {
+    "payload": "BP_0225.gray",
+    "path": "tests/fixtures/holds/bright-caps/071500.gray"
+  },
+  {
+    "payload": "BP_0226.gray",
+    "path": "tests/fixtures/holds/bright-caps/071517.gray"
+  },
+  {
+    "payload": "BP_0227.gray",
+    "path": "tests/fixtures/holds/bright-caps/071533.gray"
+  },
+  {
+    "payload": "BP_0228.gray",
+    "path": "tests/fixtures/holds/bright-caps/071550.gray"
+  },
+  {
+    "payload": "BP_0229.gray",
+    "path": "tests/fixtures/holds/bright-caps/071567.gray"
+  },
+  {
+    "payload": "BP_0230.gray",
+    "path": "tests/fixtures/holds/bright-caps/071583.gray"
+  },
+  {
+    "payload": "BP_0231.gray",
+    "path": "tests/fixtures/holds/bright-caps/071600.gray"
+  },
+  {
+    "payload": "BP_0232.gray",
+    "path": "tests/fixtures/holds/bright-caps/071617.gray"
+  },
+  {
+    "payload": "BP_0233.gray",
+    "path": "tests/fixtures/holds/bright-caps/071633.gray"
+  },
+  {
+    "payload": "BP_0234.gray",
+    "path": "tests/fixtures/holds/bright-caps/071650.gray"
+  },
+  {
+    "payload": "BP_0235.gray",
+    "path": "tests/fixtures/holds/bright-caps/071667.gray"
+  },
+  {
+    "payload": "BP_0236.gray",
+    "path": "tests/fixtures/holds/bright-caps/071684.gray"
+  },
+  {
+    "payload": "BP_0237.gray",
+    "path": "tests/fixtures/holds/bright-caps/071700.gray"
+  },
+  {
+    "payload": "BP_0238.gray",
+    "path": "tests/fixtures/holds/bright-caps/071717.gray"
+  },
+  {
+    "payload": "BP_0239.gray",
+    "path": "tests/fixtures/holds/bright-caps/071734.gray"
+  },
+  {
+    "payload": "BP_0240.gray",
+    "path": "tests/fixtures/holds/bright-caps/071750.gray"
+  },
+  {
+    "payload": "BP_0241.gray",
+    "path": "tests/fixtures/holds/bright-caps/071768.gray"
+  },
+  {
+    "payload": "BP_0242.gray",
+    "path": "tests/fixtures/holds/bright-caps/071784.gray"
+  },
+  {
+    "payload": "BP_0243.gray",
+    "path": "tests/fixtures/holds/bright-caps/071800.gray"
+  },
+  {
+    "payload": "BP_0244.gray",
+    "path": "tests/fixtures/holds/bright-caps/071817.gray"
+  },
+  {
+    "payload": "BP_0245.gray",
+    "path": "tests/fixtures/holds/bright-caps/071833.gray"
+  },
+  {
+    "payload": "BP_0246.gray",
+    "path": "tests/fixtures/holds/bright-caps/071850.gray"
+  },
+  {
+    "payload": "BP_0247.gray",
+    "path": "tests/fixtures/holds/bright-caps/071867.gray"
+  },
+  {
+    "payload": "BP_0248.gray",
+    "path": "tests/fixtures/holds/bright-caps/071884.gray"
+  },
+  {
+    "payload": "BP_0249.gray",
+    "path": "tests/fixtures/holds/bright-caps/071900.gray"
+  },
+  {
+    "payload": "BP_0250.gray",
+    "path": "tests/fixtures/holds/bright-caps/071917.gray"
+  },
+  {
+    "payload": "BP_0251.gray",
+    "path": "tests/fixtures/holds/bright-caps/071934.gray"
+  },
+  {
+    "payload": "BP_0252.gray",
+    "path": "tests/fixtures/holds/bright-caps/071950.gray"
+  },
+  {
+    "payload": "BP_0253.gray",
+    "path": "tests/fixtures/holds/bright-caps/071968.gray"
+  },
+  {
+    "payload": "BP_0254.gray",
+    "path": "tests/fixtures/holds/bright-caps/071984.gray"
+  },
+  {
+    "payload": "BP_0255.gray",
+    "path": "tests/fixtures/holds/bright-caps/072001.gray"
+  },
+  {
+    "payload": "BP_0256.gray",
+    "path": "tests/fixtures/holds/bright-caps/072017.gray"
+  },
+  {
+    "payload": "BP_0257.gray",
+    "path": "tests/fixtures/holds/bright-caps/072034.gray"
+  },
+  {
+    "payload": "BP_0258.gray",
+    "path": "tests/fixtures/holds/bright-caps/072050.gray"
+  },
+  {
+    "payload": "BP_0259.gray",
+    "path": "tests/fixtures/holds/bright-caps/072067.gray"
+  },
+  {
+    "payload": "BP_0260.gray",
+    "path": "tests/fixtures/holds/bright-caps/072084.gray"
+  },
+  {
+    "payload": "BP_0261.gray",
+    "path": "tests/fixtures/holds/bright-caps/072100.gray"
+  },
+  {
+    "payload": "BP_0262.gray",
+    "path": "tests/fixtures/holds/bright-caps/072134.gray"
+  },
+  {
+    "payload": "BP_0263.gray",
+    "path": "tests/fixtures/holds/bright-caps/072151.gray"
+  },
+  {
+    "payload": "BP_0264.gray",
+    "path": "tests/fixtures/holds/bright-caps/072167.gray"
+  },
+  {
+    "payload": "BP_0265.gray",
+    "path": "tests/fixtures/holds/bright-caps/072184.gray"
+  },
+  {
+    "payload": "BP_0266.gray",
+    "path": "tests/fixtures/holds/bright-caps/072200.gray"
+  },
+  {
+    "payload": "BP_0267.gray",
+    "path": "tests/fixtures/holds/bright-caps/072217.gray"
+  },
+  {
+    "payload": "BP_0268.gray",
+    "path": "tests/fixtures/holds/bright-caps/072233.gray"
+  },
+  {
+    "payload": "BP_0269.gray",
+    "path": "tests/fixtures/holds/bright-caps/072250.gray"
+  },
+  {
+    "payload": "BP_0270.gray",
+    "path": "tests/fixtures/holds/bright-caps/072267.gray"
+  },
+  {
+    "payload": "BP_0271.gray",
+    "path": "tests/fixtures/holds/bright-caps/072284.gray"
+  },
+  {
+    "payload": "BP_0272.md",
+    "path": "tests/fixtures/holds/bright-caps/README.md"
+  },
+  {
+    "payload": "BP_0273.csv",
+    "path": "tests/fixtures/holds/bright-caps/sequence.csv"
+  },
+  {
+    "payload": "BP_0274.json",
+    "path": "tests/fixtures/holds/bright-caps/source.json"
+  },
+  {
+    "payload": "BP_0275.gray",
+    "path": "tests/fixtures/holds/hold_005876.gray"
+  },
+  {
+    "payload": "BP_0276.gray",
+    "path": "tests/fixtures/holds/hold_005910.gray"
+  },
+  {
+    "payload": "BP_0277.gray",
+    "path": "tests/fixtures/holds/hold_005943.gray"
+  },
+  {
+    "payload": "BP_0278.gray",
+    "path": "tests/fixtures/holds/hold_005975.gray"
+  },
+  {
+    "payload": "BP_0279.gray",
+    "path": "tests/fixtures/holds/hold_006009.gray"
+  },
+  {
+    "payload": "BP_0280.gray",
+    "path": "tests/fixtures/holds/hold_006043.gray"
+  },
+  {
+    "payload": "BP_0281.gray",
+    "path": "tests/fixtures/holds/hold_006077.gray"
+  },
+  {
+    "payload": "BP_0282.gray",
+    "path": "tests/fixtures/holds/hold_006110.gray"
+  },
+  {
+    "payload": "BP_0283.gray",
+    "path": "tests/fixtures/holds/hold_006144.gray"
+  },
+  {
+    "payload": "BP_0284.gray",
+    "path": "tests/fixtures/holds/hold_006195.gray"
+  },
+  {
+    "payload": "BP_0285.gray",
+    "path": "tests/fixtures/holds/hold_006243.gray"
+  },
+  {
+    "payload": "BP_0286.gray",
+    "path": "tests/fixtures/holds/hold_006276.gray"
+  },
+  {
+    "payload": "BP_0287.gray",
+    "path": "tests/fixtures/holds/hold_006309.gray"
+  },
+  {
+    "payload": "BP_0288.gray",
+    "path": "tests/fixtures/holds/hold_006343.gray"
+  },
+  {
+    "payload": "BP_0289.gray",
+    "path": "tests/fixtures/holds/hold_006376.gray"
+  },
+  {
+    "payload": "BP_0290.gray",
+    "path": "tests/fixtures/holds/hold_006410.gray"
+  },
+  {
+    "payload": "BP_0291.gray",
+    "path": "tests/fixtures/holds/hold_006442.gray"
+  },
+  {
+    "payload": "BP_0292.gray",
+    "path": "tests/fixtures/holds/hold_006475.gray"
+  },
+  {
+    "payload": "BP_0293.gray",
+    "path": "tests/fixtures/holds/hold_006510.gray"
+  },
+  {
+    "payload": "BP_0294.gray",
+    "path": "tests/fixtures/holds/hold_006543.gray"
+  },
+  {
+    "payload": "BP_0295.gray",
+    "path": "tests/fixtures/holds/hold_006560.gray"
+  },
+  {
+    "payload": "BP_0296.gray",
+    "path": "tests/fixtures/holds/hold_006576.gray"
+  },
+  {
+    "payload": "BP_0297.gray",
+    "path": "tests/fixtures/holds/hold_006594.gray"
+  },
+  {
+    "payload": "BP_0298.gray",
+    "path": "tests/fixtures/holds/hold_006626.gray"
+  },
+  {
+    "payload": "BP_0299.gray",
+    "path": "tests/fixtures/holds/hold_006643.gray"
+  },
+  {
+    "payload": "BP_0300.gray",
+    "path": "tests/fixtures/holds/hold_006659.gray"
+  },
+  {
+    "payload": "BP_0301.gray",
+    "path": "tests/fixtures/holds/hold_006676.gray"
+  },
+  {
+    "payload": "BP_0302.gray",
+    "path": "tests/fixtures/holds/hold_006692.gray"
+  },
+  {
+    "payload": "BP_0303.gray",
+    "path": "tests/fixtures/holds/hold_006727.gray"
+  },
+  {
+    "payload": "BP_0304.gray",
+    "path": "tests/fixtures/holds/hold_006776.gray"
+  },
+  {
+    "payload": "BP_0305.gray",
+    "path": "tests/fixtures/holds/hold_006811.gray"
+  },
+  {
+    "payload": "BP_0306.gray",
+    "path": "tests/fixtures/holds/hold_006859.gray"
+  },
+  {
+    "payload": "BP_0307.gray",
+    "path": "tests/fixtures/holds/hold_006896.gray"
+  },
+  {
+    "payload": "BP_0308.gray",
+    "path": "tests/fixtures/holds/hold_006948.gray"
+  },
+  {
+    "payload": "BP_0309.gray",
+    "path": "tests/fixtures/holds/hold_006993.gray"
+  },
+  {
+    "payload": "BP_0310.gray",
+    "path": "tests/fixtures/holds/hold_007025.gray"
+  },
+  {
+    "payload": "BP_0311.gray",
+    "path": "tests/fixtures/holds/hold_007043.gray"
+  },
+  {
+    "payload": "BP_0312.gray",
+    "path": "tests/fixtures/holds/hold_007075.gray"
+  },
+  {
+    "payload": "BP_0313.gray",
+    "path": "tests/fixtures/holds/hold_007093.gray"
+  },
+  {
+    "payload": "BP_0314.gray",
+    "path": "tests/fixtures/holds/hold_007109.gray"
+  },
+  {
+    "payload": "BP_0315.gray",
+    "path": "tests/fixtures/holds/hold_007127.gray"
+  },
+  {
+    "payload": "BP_0316.csv",
+    "path": "tests/fixtures/holds/sequence.csv"
+  },
+  {
+    "payload": "BP_0317.md",
+    "path": "tests/fixtures/precision/README.md"
+  },
+  {
+    "payload": "BP_0318.csv",
+    "path": "tests/fixtures/precision/duhast_frozen_encoded.csv"
+  },
+  {
+    "payload": "BP_0319.csv",
+    "path": "tests/fixtures/precision/duhast_observations.csv"
+  },
+  {
+    "payload": "BP_0320.csv",
+    "path": "tests/fixtures/precision/duhast_opening.csv"
+  },
+  {
+    "payload": "BP_0321.gray",
+    "path": "tests/fixtures/precision/flight_083800.gray"
+  },
+  {
+    "payload": "BP_0322.gray",
+    "path": "tests/fixtures/precision/flight_083817.gray"
+  },
+  {
+    "payload": "BP_0323.gray",
+    "path": "tests/fixtures/precision/flight_083850.gray"
+  },
+  {
+    "payload": "BP_0324.gray",
+    "path": "tests/fixtures/precision/flight_083867.gray"
+  },
+  {
+    "payload": "BP_0325.gray",
+    "path": "tests/fixtures/precision/flight_083883.gray"
+  },
+  {
+    "payload": "BP_0326.gray",
+    "path": "tests/fixtures/precision/flight_083900.gray"
+  },
+  {
+    "payload": "BP_0327.gray",
+    "path": "tests/fixtures/precision/flight_083917.gray"
+  },
+  {
+    "payload": "BP_0328.gray",
+    "path": "tests/fixtures/precision/flight_083933.gray"
+  },
+  {
+    "payload": "BP_0329.gray",
+    "path": "tests/fixtures/precision/flight_083950.gray"
+  },
+  {
+    "payload": "BP_0330.gray",
+    "path": "tests/fixtures/precision/flight_083966.gray"
+  },
+  {
+    "payload": "BP_0331.gray",
+    "path": "tests/fixtures/precision/flight_083983.gray"
+  },
+  {
+    "payload": "BP_0332.gray",
+    "path": "tests/fixtures/precision/flight_084000.gray"
+  },
+  {
+    "payload": "BP_0333.gray",
+    "path": "tests/fixtures/precision/flight_084017.gray"
+  },
+  {
+    "payload": "BP_0334.gray",
+    "path": "tests/fixtures/precision/flight_084033.gray"
+  },
+  {
+    "payload": "BP_0335.gray",
+    "path": "tests/fixtures/precision/flight_084050.gray"
+  },
+  {
+    "payload": "BP_0336.gray",
+    "path": "tests/fixtures/precision/flight_084066.gray"
+  },
+  {
+    "payload": "BP_0337.gray",
+    "path": "tests/fixtures/precision/flight_084083.gray"
+  },
+  {
+    "payload": "BP_0338.gray",
+    "path": "tests/fixtures/precision/flight_084100.gray"
+  },
+  {
+    "payload": "BP_0339.gray",
+    "path": "tests/fixtures/precision/flight_084117.gray"
+  },
+  {
+    "payload": "BP_0340.gray",
+    "path": "tests/fixtures/precision/flight_084133.gray"
+  },
+  {
+    "payload": "BP_0341.csv",
+    "path": "tests/fixtures/precision/flight_first_observations.csv"
+  },
+  {
+    "payload": "BP_0342.csv",
+    "path": "tests/fixtures/precision/flight_first_opening.csv"
+  },
+  {
+    "payload": "BP_0343.csv",
+    "path": "tests/fixtures/precision/flight_second_observations.csv"
+  },
+  {
+    "payload": "BP_0344.csv",
+    "path": "tests/fixtures/precision/flight_second_opening.csv"
+  },
+  {
+    "payload": "BP_0345.csv",
+    "path": "tests/fixtures/precision/lost_arrow.csv"
+  },
+  {
+    "payload": "BP_0346.gray",
+    "path": "tests/fixtures/rapid/084717.gray"
+  },
+  {
+    "payload": "BP_0347.gray",
+    "path": "tests/fixtures/rapid/084733.gray"
+  },
+  {
+    "payload": "BP_0348.gray",
+    "path": "tests/fixtures/rapid/084749.gray"
+  },
+  {
+    "payload": "BP_0349.gray",
+    "path": "tests/fixtures/rapid/084765.gray"
+  },
+  {
+    "payload": "BP_0350.gray",
+    "path": "tests/fixtures/rapid/084782.gray"
+  },
+  {
+    "payload": "BP_0351.gray",
+    "path": "tests/fixtures/rapid/084799.gray"
+  },
+  {
+    "payload": "BP_0352.gray",
+    "path": "tests/fixtures/rapid/084816.gray"
+  },
+  {
+    "payload": "BP_0353.gray",
+    "path": "tests/fixtures/rapid/084833.gray"
+  },
+  {
+    "payload": "BP_0354.gray",
+    "path": "tests/fixtures/rapid/084850.gray"
+  },
+  {
+    "payload": "BP_0355.gray",
+    "path": "tests/fixtures/rapid/084882.gray"
+  },
+  {
+    "payload": "BP_0356.gray",
+    "path": "tests/fixtures/rapid/084899.gray"
+  },
+  {
+    "payload": "BP_0357.gray",
+    "path": "tests/fixtures/rapid/084915.gray"
+  },
+  {
+    "payload": "BP_0358.gray",
+    "path": "tests/fixtures/rapid/084933.gray"
+  },
+  {
+    "payload": "BP_0359.gray",
+    "path": "tests/fixtures/rapid/084949.gray"
+  },
+  {
+    "payload": "BP_0360.gray",
+    "path": "tests/fixtures/rapid/084965.gray"
+  },
+  {
+    "payload": "BP_0361.gray",
+    "path": "tests/fixtures/rapid/084982.gray"
+  },
+  {
+    "payload": "BP_0362.gray",
+    "path": "tests/fixtures/rapid/085000.gray"
+  },
+  {
+    "payload": "BP_0363.gray",
+    "path": "tests/fixtures/rapid/085016.gray"
+  },
+  {
+    "payload": "BP_0364.gray",
+    "path": "tests/fixtures/rapid/085033.gray"
+  },
+  {
+    "payload": "BP_0365.gray",
+    "path": "tests/fixtures/rapid/085050.gray"
+  },
+  {
+    "payload": "BP_0366.gray",
+    "path": "tests/fixtures/rapid/085066.gray"
+  },
+  {
+    "payload": "BP_0367.gray",
+    "path": "tests/fixtures/rapid/085082.gray"
+  },
+  {
+    "payload": "BP_0368.gray",
+    "path": "tests/fixtures/rapid/085099.gray"
+  },
+  {
+    "payload": "BP_0369.gray",
+    "path": "tests/fixtures/rapid/085117.gray"
+  },
+  {
+    "payload": "BP_0370.gray",
+    "path": "tests/fixtures/rapid/085133.gray"
+  },
+  {
+    "payload": "BP_0371.gray",
+    "path": "tests/fixtures/rapid/085149.gray"
+  },
+  {
+    "payload": "BP_0372.gray",
+    "path": "tests/fixtures/rapid/085165.gray"
+  },
+  {
+    "payload": "BP_0373.gray",
+    "path": "tests/fixtures/rapid/085182.gray"
+  },
+  {
+    "payload": "BP_0374.gray",
+    "path": "tests/fixtures/rapid/085199.gray"
+  },
+  {
+    "payload": "BP_0375.gray",
+    "path": "tests/fixtures/rapid/085216.gray"
+  },
+  {
+    "payload": "BP_0376.gray",
+    "path": "tests/fixtures/rapid/085233.gray"
+  },
+  {
+    "payload": "BP_0377.gray",
+    "path": "tests/fixtures/rapid/085249.gray"
+  },
+  {
+    "payload": "BP_0378.csv",
+    "path": "tests/fixtures/rapid/sequence.csv"
+  },
+  {
+    "payload": "BP_0379.gray",
+    "path": "tests/fixtures/themes/000000.gray"
+  },
+  {
+    "payload": "BP_0380.gray",
+    "path": "tests/fixtures/themes/011709.gray"
+  },
+  {
+    "payload": "BP_0381.gray",
+    "path": "tests/fixtures/themes/020858.gray"
+  },
+  {
+    "payload": "BP_0382.gray",
+    "path": "tests/fixtures/themes/020874.gray"
+  },
+  {
+    "payload": "BP_0383.gray",
+    "path": "tests/fixtures/themes/020892.gray"
+  },
+  {
+    "payload": "BP_0384.gray",
+    "path": "tests/fixtures/themes/020908.gray"
+  },
+  {
+    "payload": "BP_0385.gray",
+    "path": "tests/fixtures/themes/020924.gray"
+  },
+  {
+    "payload": "BP_0386.gray",
+    "path": "tests/fixtures/themes/020940.gray"
+  },
+  {
+    "payload": "BP_0387.gray",
+    "path": "tests/fixtures/themes/020957.gray"
+  },
+  {
+    "payload": "BP_0388.gray",
+    "path": "tests/fixtures/themes/020974.gray"
+  },
+  {
+    "payload": "BP_0389.gray",
+    "path": "tests/fixtures/themes/020991.gray"
+  },
+  {
+    "payload": "BP_0390.gray",
+    "path": "tests/fixtures/themes/021008.gray"
+  },
+  {
+    "payload": "BP_0391.gray",
+    "path": "tests/fixtures/themes/021024.gray"
+  },
+  {
+    "payload": "BP_0392.gray",
+    "path": "tests/fixtures/themes/021041.gray"
+  },
+  {
+    "payload": "BP_0393.gray",
+    "path": "tests/fixtures/themes/021057.gray"
+  },
+  {
+    "payload": "BP_0394.gray",
+    "path": "tests/fixtures/themes/021074.gray"
+  },
+  {
+    "payload": "BP_0395.gray",
+    "path": "tests/fixtures/themes/021091.gray"
+  },
+  {
+    "payload": "BP_0396.gray",
+    "path": "tests/fixtures/themes/021108.gray"
+  },
+  {
+    "payload": "BP_0397.gray",
+    "path": "tests/fixtures/themes/021141.gray"
+  },
+  {
+    "payload": "BP_0398.gray",
+    "path": "tests/fixtures/themes/021157.gray"
+  },
+  {
+    "payload": "BP_0399.gray",
+    "path": "tests/fixtures/themes/022308.gray"
+  },
+  {
+    "payload": "BP_0400.gray",
+    "path": "tests/fixtures/themes/024992.gray"
+  },
+  {
+    "payload": "BP_0401.gray",
+    "path": "tests/fixtures/themes/025858.gray"
+  },
+  {
+    "payload": "BP_0402.gray",
+    "path": "tests/fixtures/themes/029992.gray"
+  },
+  {
+    "payload": "BP_0403.gray",
+    "path": "tests/fixtures/themes/032799.gray"
+  },
+  {
+    "payload": "BP_0404.gray",
+    "path": "tests/fixtures/themes/045009.gray"
+  },
+  {
+    "payload": "BP_0405.gray",
+    "path": "tests/fixtures/themes/065907.gray"
+  },
+  {
+    "payload": "BP_0406.gray",
+    "path": "tests/fixtures/themes/065923.gray"
+  },
+  {
+    "payload": "BP_0407.gray",
+    "path": "tests/fixtures/themes/065940.gray"
+  },
+  {
+    "payload": "BP_0408.gray",
+    "path": "tests/fixtures/themes/065957.gray"
+  },
+  {
+    "payload": "BP_0409.gray",
+    "path": "tests/fixtures/themes/065974.gray"
+  },
+  {
+    "payload": "BP_0410.gray",
+    "path": "tests/fixtures/themes/065991.gray"
+  },
+  {
+    "payload": "BP_0411.gray",
+    "path": "tests/fixtures/themes/066008.gray"
+  },
+  {
+    "payload": "BP_0412.gray",
+    "path": "tests/fixtures/themes/066040.gray"
+  },
+  {
+    "payload": "BP_0413.gray",
+    "path": "tests/fixtures/themes/066057.gray"
+  },
+  {
+    "payload": "BP_0414.gray",
+    "path": "tests/fixtures/themes/066073.gray"
+  },
+  {
+    "payload": "BP_0415.gray",
+    "path": "tests/fixtures/themes/066091.gray"
+  },
+  {
+    "payload": "BP_0416.gray",
+    "path": "tests/fixtures/themes/066108.gray"
+  },
+  {
+    "payload": "BP_0417.gray",
+    "path": "tests/fixtures/themes/066124.gray"
+  },
+  {
+    "payload": "BP_0418.gray",
+    "path": "tests/fixtures/themes/066141.gray"
+  },
+  {
+    "payload": "BP_0419.gray",
+    "path": "tests/fixtures/themes/066157.gray"
+  },
+  {
+    "payload": "BP_0420.gray",
+    "path": "tests/fixtures/themes/066174.gray"
+  },
+  {
+    "payload": "BP_0421.gray",
+    "path": "tests/fixtures/themes/066190.gray"
+  },
+  {
+    "payload": "BP_0422.gray",
+    "path": "tests/fixtures/themes/066207.gray"
+  },
+  {
+    "payload": "BP_0423.gray",
+    "path": "tests/fixtures/themes/066223.gray"
+  },
+  {
+    "payload": "BP_0424.gray",
+    "path": "tests/fixtures/themes/066240.gray"
+  },
+  {
+    "payload": "BP_0425.csv",
+    "path": "tests/fixtures/themes/sequence.csv"
+  },
+  {
+    "payload": "BP_0426.csv",
+    "path": "tests/replay-013/detections.csv"
+  },
+  {
+    "payload": "BP_0427.csv",
+    "path": "tests/replay-013/frames.csv"
+  },
+  {
+    "payload": "BP_0428.csv",
+    "path": "tests/replay-013/hits.csv"
+  },
+  {
+    "payload": "BP_0429.json",
+    "path": "tests/replay-013/metadata.json"
+  },
+  {
+    "payload": "BP_0430.json",
+    "path": "tests/replay-014/comparison.json"
+  },
+  {
+    "payload": "BP_0431.csv",
+    "path": "tests/replay-014/detections.csv"
+  },
+  {
+    "payload": "BP_0432.csv",
+    "path": "tests/replay-014/frames.csv"
+  },
+  {
+    "payload": "BP_0433.csv",
+    "path": "tests/replay-014/hits.csv"
+  },
+  {
+    "payload": "BP_0434.json",
+    "path": "tests/replay-014/metadata.json"
+  },
+  {
+    "payload": "BP_0435.json",
+    "path": "tests/replay-015/current/comparison.json"
+  },
+  {
+    "payload": "BP_0436.csv",
+    "path": "tests/replay-015/current/detections.csv"
+  },
+  {
+    "payload": "BP_0437.csv",
+    "path": "tests/replay-015/current/frames.csv"
+  },
+  {
+    "payload": "BP_0438.csv",
+    "path": "tests/replay-015/current/hits.csv"
+  },
+  {
+    "payload": "BP_0439.json",
+    "path": "tests/replay-015/current/metadata.json"
+  },
+  {
+    "payload": "BP_0440.json",
+    "path": "tests/replay-015/glow/comparison.json"
+  },
+  {
+    "payload": "BP_0441.csv",
+    "path": "tests/replay-015/glow/detections.csv"
+  },
+  {
+    "payload": "BP_0442.csv",
+    "path": "tests/replay-015/glow/frames.csv"
+  },
+  {
+    "payload": "BP_0443.csv",
+    "path": "tests/replay-015/glow/hits.csv"
+  },
+  {
+    "payload": "BP_0444.json",
+    "path": "tests/replay-015/glow/metadata.json"
+  },
+  {
+    "payload": "BP_0445.json",
+    "path": "tests/replay-015/rapid/comparison.json"
+  },
+  {
+    "payload": "BP_0446.csv",
+    "path": "tests/replay-015/rapid/detections.csv"
+  },
+  {
+    "payload": "BP_0447.csv",
+    "path": "tests/replay-015/rapid/frames.csv"
+  },
+  {
+    "payload": "BP_0448.csv",
+    "path": "tests/replay-015/rapid/hits.csv"
+  },
+  {
+    "payload": "BP_0449.json",
+    "path": "tests/replay-015/rapid/metadata.json"
+  },
+  {
+    "payload": "BP_0450.json",
+    "path": "tests/replay-016/duhast/comparison.json"
+  },
+  {
+    "payload": "BP_0451.csv",
+    "path": "tests/replay-016/duhast/detections.csv"
+  },
+  {
+    "payload": "BP_0452.csv",
+    "path": "tests/replay-016/duhast/frames.csv"
+  },
+  {
+    "payload": "BP_0453.csv",
+    "path": "tests/replay-016/duhast/hits.csv"
+  },
+  {
+    "payload": "BP_0454.json",
+    "path": "tests/replay-016/duhast/metadata.json"
+  },
+  {
+    "payload": "BP_0455.json",
+    "path": "tests/replay-016/flight-first/comparison.json"
+  },
+  {
+    "payload": "BP_0456.csv",
+    "path": "tests/replay-016/flight-first/detections.csv"
+  },
+  {
+    "payload": "BP_0457.csv",
+    "path": "tests/replay-016/flight-first/frames.csv"
+  },
+  {
+    "payload": "BP_0458.csv",
+    "path": "tests/replay-016/flight-first/hits.csv"
+  },
+  {
+    "payload": "BP_0459.json",
+    "path": "tests/replay-016/flight-first/metadata.json"
+  },
+  {
+    "payload": "BP_0460.json",
+    "path": "tests/replay-016/flight-second/comparison.json"
+  },
+  {
+    "payload": "BP_0461.csv",
+    "path": "tests/replay-016/flight-second/detections.csv"
+  },
+  {
+    "payload": "BP_0462.csv",
+    "path": "tests/replay-016/flight-second/frames.csv"
+  },
+  {
+    "payload": "BP_0463.csv",
+    "path": "tests/replay-016/flight-second/hits.csv"
+  },
+  {
+    "payload": "BP_0464.json",
+    "path": "tests/replay-016/flight-second/metadata.json"
+  },
+  {
+    "payload": "BP_0465.json",
+    "path": "tests/replay-016/rapid/comparison.json"
+  },
+  {
+    "payload": "BP_0466.csv",
+    "path": "tests/replay-016/rapid/detections.csv"
+  },
+  {
+    "payload": "BP_0467.csv",
+    "path": "tests/replay-016/rapid/frames.csv"
+  },
+  {
+    "payload": "BP_0468.csv",
+    "path": "tests/replay-016/rapid/hits.csv"
+  },
+  {
+    "payload": "BP_0469.json",
+    "path": "tests/replay-016/rapid/metadata.json"
+  },
+  {
+    "payload": "BP_0470.json",
+    "path": "tests/replay-016/themes/comparison.json"
+  },
+  {
+    "payload": "BP_0471.csv",
+    "path": "tests/replay-016/themes/detections.csv"
+  },
+  {
+    "payload": "BP_0472.csv",
+    "path": "tests/replay-016/themes/frames.csv"
+  },
+  {
+    "payload": "BP_0473.csv",
+    "path": "tests/replay-016/themes/hits.csv"
+  },
+  {
+    "payload": "BP_0474.json",
+    "path": "tests/replay-016/themes/metadata.json"
+  },
+  {
+    "payload": "BP_0475.csv",
+    "path": "tests/replay-017/holds/detections.csv"
+  },
+  {
+    "payload": "BP_0476.csv",
+    "path": "tests/replay-017/holds/frames.csv"
+  },
+  {
+    "payload": "BP_0477.csv",
+    "path": "tests/replay-017/holds/hits.csv"
+  },
+  {
+    "payload": "BP_0478.json",
+    "path": "tests/replay-017/holds/metadata.json"
+  },
+  {
+    "payload": "BP_0479.json",
+    "path": "tests/replay-017/rapid/comparison.json"
+  },
+  {
+    "payload": "BP_0480.csv",
+    "path": "tests/replay-017/rapid/detections.csv"
+  },
+  {
+    "payload": "BP_0481.csv",
+    "path": "tests/replay-017/rapid/frames.csv"
+  },
+  {
+    "payload": "BP_0482.csv",
+    "path": "tests/replay-017/rapid/hits.csv"
+  },
+  {
+    "payload": "BP_0483.json",
+    "path": "tests/replay-017/rapid/metadata.json"
+  },
+  {
+    "payload": "BP_0484.json",
+    "path": "tests/replay-017/themes/comparison.json"
+  },
+  {
+    "payload": "BP_0485.csv",
+    "path": "tests/replay-017/themes/detections.csv"
+  },
+  {
+    "payload": "BP_0486.csv",
+    "path": "tests/replay-017/themes/frames.csv"
+  },
+  {
+    "payload": "BP_0487.csv",
+    "path": "tests/replay-017/themes/hits.csv"
+  },
+  {
+    "payload": "BP_0488.json",
+    "path": "tests/replay-017/themes/metadata.json"
+  },
+  {
+    "payload": "BP_0489.json",
+    "path": "tests/replay-018/results.json"
+  },
+  {
+    "payload": "BP_0490.csv",
+    "path": "tests/replay-018/video-baseline-017/detections.csv"
+  },
+  {
+    "payload": "BP_0491.csv",
+    "path": "tests/replay-018/video-baseline-017/frames.csv"
+  },
+  {
+    "payload": "BP_0492.csv",
+    "path": "tests/replay-018/video-baseline-017/hits.csv"
+  },
+  {
+    "payload": "BP_0493.json",
+    "path": "tests/replay-018/video-baseline-017/metadata.json"
+  },
+  {
+    "payload": "BP_0494.csv",
+    "path": "tests/replay-019/baseline-018/detections.csv"
+  },
+  {
+    "payload": "BP_0495.csv",
+    "path": "tests/replay-019/baseline-018/frames.csv"
+  },
+  {
+    "payload": "BP_0496.csv",
+    "path": "tests/replay-019/baseline-018/hits.csv"
+  },
+  {
+    "payload": "BP_0497.json",
+    "path": "tests/replay-019/baseline-018/metadata.json"
+  },
+  {
+    "payload": "BP_0498.json",
+    "path": "tests/replay-019/fixed-019/comparison.json"
+  },
+  {
+    "payload": "BP_0499.csv",
+    "path": "tests/replay-019/fixed-019/detections.csv"
+  },
+  {
+    "payload": "BP_0500.csv",
+    "path": "tests/replay-019/fixed-019/frames.csv"
+  },
+  {
+    "payload": "BP_0501.csv",
+    "path": "tests/replay-019/fixed-019/hits.csv"
+  },
+  {
+    "payload": "BP_0502.json",
+    "path": "tests/replay-019/fixed-019/metadata.json"
+  },
+  {
+    "payload": "BP_0503.json",
+    "path": "tests/replay-019/results.json"
+  },
+  {
+    "payload": "BP_0504.csv",
+    "path": "tests/replay-results/detections.csv"
+  },
+  {
+    "payload": "BP_0505.csv",
+    "path": "tests/replay-results/frames.csv"
+  },
+  {
+    "payload": "BP_0506.csv",
+    "path": "tests/replay-results/hits.csv"
+  },
+  {
+    "payload": "BP_0507.json",
+    "path": "tests/replay-results/metadata.json"
+  },
+  {
+    "payload": "BP_0508.java",
+    "path": "tools/SyntaxCheck.java"
+  },
+  {
+    "payload": "BP_0509.py",
+    "path": "tools/build_apk.py"
+  },
+  {
+    "payload": "BP_0510.py",
+    "path": "tools/check.py"
+  },
+  {
+    "payload": "BP_0511.py",
+    "path": "tools/check_gl.py"
+  },
+  {
+    "payload": "BP_0512.py",
+    "path": "tools/extract_contact_trace.py"
+  },
+  {
+    "payload": "BP_0513.py",
+    "path": "tools/replay_video.py"
+  }
+]

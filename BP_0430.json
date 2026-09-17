@@ -1,0 +1,19 @@
+{
+  "original_notes": 240,
+  "new_notes": 241,
+  "unmatched_original": [],
+  "max_prediction_change_ms": 2,
+  "additional": [
+    {
+      "frame_ms": "84933",
+      "capture_ms": "84932",
+      "ready_ms": "84939",
+      "id": "239",
+      "lane": "1",
+      "kind": "TAP",
+      "due_ms": "84970",
+      "revision": "false"
+    }
+  ],
+  "note": "Offline replay of recorded pixels and recorded analysis times. Comparison does not measure game scores or live Android delivery."
+}

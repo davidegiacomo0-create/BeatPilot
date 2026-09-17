@@ -1,0 +1,25 @@
+{
+  "version": "0.1.9-holdtails",
+  "date": "2026-09-17",
+  "prior_assertions": 6016,
+  "new_assertions": 268,
+  "total_assertions": 6284,
+  "negative_control": "0.1.8 HoldDetector rejects the visible bright cap in 071000.gray",
+  "consecutive_hold_test": {
+    "down_ms": 71039,
+    "release_ms": 71507,
+    "next_down_ms": 71759,
+    "callback_delays_ms": [
+      0,
+      5,
+      17
+    ]
+  },
+  "sparse_live_tail_plus_bright_pixel_samples_release_ms": 71507,
+  "unstable_live_tail_refined_release_ms": 72225,
+  "encoded_replay_frames": 4356,
+  "all_447_encoded_prediction_rows_identical_ignoring_ids": true,
+  "device_or_emulator_run": false,
+  "new_game_score_measured": false,
+  "apk_sha256": "f07a67f10da52d6fc380e8ab4fda5c4d8182bd4df7d023344b39968419c29b03"
+}

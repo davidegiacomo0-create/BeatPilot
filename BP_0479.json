@@ -1,0 +1,7 @@
+{
+  "baseline_version": "0.1.6-precision",
+  "all_prediction_rows_identical": true,
+  "predicted_starts": 241,
+  "refinements": 9,
+  "no_hold_false_positives": true
+}
