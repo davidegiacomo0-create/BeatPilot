@@ -32,6 +32,12 @@ jobs:
       - name: Run BeatPilot checks
         run: python3 tools/check.py
 
+      - name: Generate temporary debug signing key
+        shell: bash
+        run: |
+          mkdir -p signing
+          keytool -genkeypair -noprompt             -keystore signing/beatpilot-debug.jks             -storepass android             -keypass android             -alias androiddebugkey             -keyalg RSA -keysize 2048 -validity 10000             -dname "CN=BeatPilot Debug,O=BeatPilot,C=IT"
+
       - name: Build APK
         run: python3 tools/build_apk.py
 
