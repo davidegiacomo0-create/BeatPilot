@@ -1,0 +1,16 @@
+{
+  "report": "BeatPilot_20260917_113021_084.json",
+  "sha256": "66f0fe41a72b429bd3d6aa6562ac4405dea567ae24c399a9863a871ca9231fb3",
+  "app_version": "0.1.7-holds",
+  "device": "samsung SM-S948B",
+  "android_sdk": 36,
+  "hit_line": 0.7210000157356262,
+  "lanes": [
+    0.20499999821186066,
+    0.5,
+    0.7950000166893005
+  ],
+  "hits_and_revisions": 158,
+  "batches": 33,
+  "note": "Relative monotonic milliseconds; request/callback are not measured game input. Opening is inferred from negative note IDs; more from the next continuation."
+}
