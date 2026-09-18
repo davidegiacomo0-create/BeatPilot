@@ -241,7 +241,7 @@ public final class BeatstarDetector {
             anchor = moment / bestMass;
         } else if (bestArea / (double)(gw * gh) > .64 && gw / (double)gh > .78 && gw / (double)gh < 1.25) {
             // The circular BEATSTAR stage-transition note is a tap, not a direction.
-            kind = Kind.TAP; score = .9;
+            kind = Kind.CHECKPOINT; score = .9;
         } else {
             int[] candidate = new int[24]; int count = 0;
             for (int row = 0; row < 24; row++) for (int col = 0; col < 24; col++) {

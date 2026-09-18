@@ -74,6 +74,34 @@ public final class TouchPlanner {
                 }
                 continue;
             }
+            // A directional tail on a held note must be performed by the SAME finger.
+            // Releasing the hold and creating a fresh swipe loses the Beatstar hold-swipe.
+            if (hit.kind == Kind.UP || hit.kind == Kind.DOWN || hit.kind == Kind.LEFT || hit.kind == Kind.RIGHT) {
+                Contact held = null;
+                for (Contact old : contacts) if (old.lane == hit.lane && old.holding && old.end > at) { held = old; break; }
+                if (held != null) {
+                    held.noteId = hit.id;
+                    held.x = held.sent ? held.lastX : held.x; held.y = held.sent ? held.lastY : held.y;
+                    held.start = at; held.end = at + 50; held.holding = false; held.tap = false;
+                    held.dx = held.dy = 0;
+                    if (hit.kind == Kind.LEFT) held.dx = -.085;
+                    if (hit.kind == Kind.RIGHT) held.dx = .085;
+                    if (hit.kind == Kind.UP) held.dy = -.045;
+                    if (hit.kind == Kind.DOWN) held.dy = .045;
+                    held.dx = Math.max(.001 - held.x, Math.min(.999 - held.x, held.dx));
+                    held.dy = Math.max(.001 - held.y, Math.min(.999 - held.y, held.dy));
+                    continue;
+                }
+            }
+            // A circular stage checkpoint is normally a tap. If it arrives in a lane
+            // that is already being held, it is the checkpoint embedded in that hold:
+            // keep the finger down instead of converting it into a new tap and
+            // prematurely terminating the hold.
+            if (hit.kind == Kind.CHECKPOINT) {
+                boolean held = false;
+                for (Contact old : contacts) if (old.lane == hit.lane && old.holding && old.end > at) held = true;
+                if (held) continue;
+            }
             // Android's first continuation sample must contain only the old fingers.
             // A late new note cannot share offset zero with them: that rejects the
             // whole gesture. Future deadlines stay unchanged; late starts use 1 ms.
@@ -92,7 +120,7 @@ public final class TouchPlanner {
             Contact c = new Contact(); c.id = serial++; c.noteId = hit.id; c.lane = hit.lane;
             c.start = at; c.x = lanes[c.lane]; c.y = line;
             c.holding = hit.kind == Kind.HOLD_START;
-            c.tap = hit.kind == Kind.TAP;
+            c.tap = hit.kind == Kind.TAP || hit.kind == Kind.CHECKPOINT;
             if (c.holding) c.y = holdLine;
             c.end = c.holding ? Long.MAX_VALUE : at + (hit.opening ? GestureTiming.OPENING_HOLD_MS : c.tap ? 8 : 50);
             if (hit.kind == Kind.LEFT) c.dx = -.085;

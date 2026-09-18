@@ -18,25 +18,14 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Install Android SDK 35
-        shell: bash
-        run: |
-          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
-          if [ ! -x "$SDKMANAGER" ]; then
-            SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | head -n 1)
-          fi
-          test -n "$SDKMANAGER"
-          yes | "$SDKMANAGER" --licenses >/dev/null || true
-          "$SDKMANAGER" 'platform-tools' 'platforms;android-35' 'build-tools;35.0.0'
+        run: sdkmanager 'platform-tools' 'platforms;android-35' 'build-tools;35.0.0'
 
       - name: Run BeatPilot checks
         run: python3 tools/check.py
-
-      - name: Generate temporary debug signing key
-        shell: bash
-        run: |
-          mkdir -p signing
-          keytool -genkeypair -noprompt             -keystore signing/beatpilot-debug.jks             -storepass android             -keypass android             -alias androiddebugkey             -keyalg RSA -keysize 2048 -validity 10000             -dname "CN=BeatPilot Debug,O=BeatPilot,C=IT"
 
       - name: Build APK
         run: python3 tools/build_apk.py
@@ -48,6 +37,7 @@ jobs:
           APK=$(find . -type f -name '*.apk' | head -n 1)
           test -n "$APK"
           echo "path=$APK" >> "$GITHUB_OUTPUT"
+          cp "$APK" BeatPilot-0.1.10-reliability.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4

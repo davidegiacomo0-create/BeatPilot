@@ -7,8 +7,8 @@ android {
         applicationId 'it.dave.beatpilot'
         minSdk 34
         targetSdk 35
-        versionCode 11
-        versionName '0.1.10-reliability'
+        versionCode 12
+        versionName '0.1.11-regressions'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17

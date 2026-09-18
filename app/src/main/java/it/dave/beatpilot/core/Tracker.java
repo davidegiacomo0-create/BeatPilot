@@ -73,6 +73,9 @@ public final class Tracker {
             double distance = Double.MAX_VALUE;
             for (Track t : tracks) {
                 if (t.matched || t.lane != d.lane || t.kind != d.kind) continue;
+                // A completed note must not steal the next close same-lane note.
+                // It may only keep matching its own tile after that tile has reached the hit line.
+                if (t.fired && d.y < line - .005) continue;
                 double predicted = t.y + Math.max(0, t.velocity) * (now - t.last);
                 double delta = Math.abs(d.y - predicted);
                 double limit = t.frames > 1 ? .025 : .08;

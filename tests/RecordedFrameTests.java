@@ -20,7 +20,7 @@ public final class RecordedFrameTests {
             expect(bytes.length == 480 * 1040, names[i] + " dimensions");
             GrayFrame frame = new GrayFrame(480, 1040, bytes);
             List<Detector.Detection> notes = detector.detect(frame, BeatstarDetector.LANES, BeatstarDetector.HIT_LINE);
-            String actual = String.join(",", notes.stream().map(d -> (d.lane + 1) + ":" + d.kind).toList());
+            String actual = String.join(",", notes.stream().map(d -> (d.lane + 1) + ":" + (d.kind == Kind.CHECKPOINT ? Kind.TAP : d.kind)).toList());
             expect(expected[i].equals(actual), names[i] + " expected " + expected[i] + ", got " + actual);
             expect(detector.isGameplay(frame) == (i >= 2 && i <= 11), names[i] + " gameplay state");
             List<Detector.Detection> initial = detector.startingNotes(frame, BeatstarDetector.LANES, BeatstarDetector.HIT_LINE);

@@ -44,7 +44,7 @@ public final class MainActivity extends Activity {
         ScrollView scroll = new ScrollView(this); LinearLayout body = Ui.column(this); scroll.addView(body);
         setContentView(scroll); Ui.insets(scroll);
         Ui.text(body, "BeatPilot", 30);
-        Ui.text(body, "Prototipo 0.1.9 · finali delle note lunghe", 16);
+        Ui.text(body, "Prototipo " + BuildConfig.VERSION_NAME + " · regressioni reali", 16);
         Ui.text(body, "Profilo per tocchi, frecce e note di cambio stage. Tiene conto della prospettiva delle corsie. "
                 + "Tocchi, frecce e note lunghe dritte. Le pressioni con freccia finale non sono ancora supportate.", 15);
         status = Ui.text(body, "", 14);
