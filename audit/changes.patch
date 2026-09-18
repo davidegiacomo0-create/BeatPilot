@@ -1,0 +1,668 @@
+--- a/LEGGIMI.md
++++ b/LEGGIMI.md
+@@ -1,111 +1,37 @@
+-# BeatPilot 0.1.9 — finali delle note lunghe
++# BeatPilot — revisione di affidabilità non rilasciata
+ 
+-Aggiornamento per il Samsung Galaxy S26 Ultra / Android 16 / One UI 8.5 di Dave. Destinazione: `com.spaceapegames.beatstar`.
++Questi sorgenti conservano una correzione parziale e i difetti ancora riproducibili della base 0.1.9-holdtails. **Non costituiscono un nuovo APK pronto da installare e non garantiscono Perfect+ su ogni nota.** Il numero versione dell'app è rimasto quello della base: non è stata pubblicata una nuova versione.
+ 
+-La nuova registrazione `BeatPilot_20260917_120645_572` arriva fino a circa **1:12**, poi il bot si interrompe e il gioco mostra **FAILED TO HOLD**. La fine di una nota lunga sinistra era stata vista solo due volte: il cappuccio era diventato molto luminoso, e il precedente controllo cercava una punta più scura. Senza rilascio, la nota lunga successiva nella stessa corsia veniva ignorata; una continuazione senza eventi provocava poi l'arresto.
++## Risultato del 17 settembre 2026
+ 
+-La **0.1.9-holdtails** riconosce anche la punta luminosa, verificando la forma completa della nota. Recupera le code con pochi campioni e aggiorna le previsioni incoerenti; mantiene quelle già stabili. Evita inoltre di inviare ad Android una continuazione immobile senza un nuovo tocco, movimento o rilascio.
++È stata corretta la cancellazione delle note già previste quando il riconoscimento dell'interfaccia fallisce brevemente. Per meno di 80 ms il programma conserva tracciamento, coda e contatti; sospende l'invio di nuovi gesti finché l'interfaccia non torna riconoscibile. Se l'incertezza continua, annulla lo stato come prima. Un gesto già inviato può terminare durante la sospensione. I controlli sul primo piano e sulle immagini assenti rimangono attivi.
+ 
+-**Test e compilazione superati.** Nel replay completo le 447 previsioni/revisioni restano uguali; i test dedicati riproducono invece i pochi campioni del JSON e recuperano il rilascio. Il video compresso contiene piccoli cambiamenti di pixel: da solo non riproduce fedelmente il mancato rilascio sul telefono. Il dettaglio è in `VERIFICA.txt` e nei test.
++La verifica offline riproduceva una nota prevista a 1100 ms: un solo fotogramma incerto a 1080 ms la faceva sparire. Con la modifica viene pianificato un unico tocco a 1100 ms. È stata verificata anche la conservazione di un contatto prolungato e del suo rilascio già previsto. Non si tratta di una misurazione sul telefono.
+ 
+-Installa l'aggiornamento sopra la versione attuale e lascia **anticipo 0 ms**, corsie e linea attuali. Non serve premere nuovamente Applica profilo. Riprova lo stesso brano con registrazione interna, soprattutto oltre il punto 1:12. **Il risultato della nuova versione sul telefono va ancora verificato; non è certificato il 100% di Perfect+ su ogni variante.** La combinazione pressione + freccia finale resta da implementare.
++**Restano errori che impediscono il rilascio:** se manca la fine di una nota lunga, il pianificatore scarta il nuovo inizio nella stessa corsia; una nota può essere scartata anche se si sovrappone al gesto precedente. Il primo difetto è riprodotto separatamente su tutte e tre le corsie. Il secondo usa un intervallo sintetico di 40 ms e non dimostra la causa degli errori riferiti dall'utente.
+ 
+-## Aggiornare e registrare la prova
++Il vecchio test che accettava la scomparsa della nota successiva è stato corretto: il test della continuazione immobile verifica soltanto un autentico caso senza nuova nota. Le perdite di note sono ora controlli separati che falliscono e impediscono di considerare pronta la revisione.
+ 
+-1. Installa il nuovo `BeatPilot-0.1.9-holdtails.apk` come aggiornamento. La versione interna è **0.1.9-holdtails**. È firmato con la stessa chiave; le impostazioni vengono conservate durante un normale aggiornamento.
+-2. Apri BeatPilot. Controlla che **Registra quando premi Avvia** sia attivo e **Osserva soltanto** sia disattivato.
+-3. Se il profilo e il controllo tocchi sono già configurati, puoi usarli subito. **Applica profilo del video** è necessario solo per configurarlo nuovamente: premendolo si azzera l’anticipo e si riattiva Osserva.
+-4. Avvia la condivisione dello **schermo intero**, apri Beatstar e scegli lo stesso brano con note lunghe della prova allegata. Lascia spento il registratore dello schermo Samsung.
+-5. Nella schermata iniziale del brano premi **Avvia** nel pannello di BeatPilot. Attendi la preparazione del video; comparirà **REC**. Il bot parte dopo che il registratore interno è pronto.
+-6. Lascia giocare il bot senza toccare le note. Arriva alla fine del brano oppure alla schermata di errore, poi premi **Stop**. Se il bot si è già messo in pausa, il pulsante diventa **Salva**: premilo.
+-7. Attendi il messaggio **Video salvato**. Premi **Video** nel pannello, poi **Condividi video e resoconto** nell’app. Se l’app di destinazione non accetta entrambi i file, usa **Condividi solo il video** e allega il resoconto separatamente.
++## Eseguire le verifiche
+ 
+-Il video è nella Galleria, album **BeatPilot** (`Movies/BeatPilot`). Il resoconto JSON è in **Download/BeatPilot**. Puoi allegarli anche direttamente a questa conversazione dal telefono. La condivisione apre il selettore Android: BeatPilot non invia nulla automaticamente.
+-
+-Ogni prova crea file nuovi. I pulsanti dell’app aprono o condividono l’ultima prova salvata. Durante il salvataggio, la condivisione resta bloccata per evitare di inviare per errore la prova precedente.
+-
+-## Comandi
+-
+-- **Avvia:** prepara il registratore, poi attiva il bot. Se la registrazione è disattivata nelle impostazioni, attiva soltanto il bot.
+-- **Stop:** interrompe i tocchi e salva il video della prova.
+-- **Salva:** chiude il video quando il bot è già in pausa.
+-- **Video:** salva la prova in corso e apre BeatPilot, dove si trovano i pulsanti di condivisione.
+-- **Calibra:** salva il video prima di aprire le regolazioni manuali.
+-- **Chiudi:** salva il video e termina la sessione di cattura.
+-
+-La registrazione termina anche uscendo da Beatstar o interrompendo la condivisione. È limitata a **3 minuti per video**; il bot ha il limite separato di 10 minuti. Un arresto anomalo del processo o lo spegnimento del telefono possono impedire di completare il salvataggio.
+-
+-## Cosa contiene la prova
+-
+-**Video:** MP4 H.264, senza audio, larghezza 480 pixel e proporzioni dello schermo (nel video ricevuto: 480 × 1040), frequenza obiettivo 60 fps. Il filmato ricevuto contiene 4356 fotogrammi in circa 75,5 secondi, con frequenza variabile. Il JSON distingue i frame analizzati da quelli effettivamente codificati. La velocità effettiva della nuova versione va misurata nella prossima prova. Il video usa la cattura già impiegata dal bot, senza avviare una seconda sessione Android.
+-
+-**Resoconto:** versione dell’app, modello, impostazioni di corsie/linea/anticipo, fotogrammi, riconoscimenti, istanti previsti, richieste di gesto, callback e motivi di arresto. Sono conservati il numero di note recuperate, il ritardo di accodamento e i cambi di frequenza del display. La 0.1.8 aggiunge la continuazione prevista di ciascun contatto e l’eventuale separazione del rilascio in millisecondi (`contact_state`). Le note lunghe generano eventi HOLD_START e HOLD_END; il contatore delle note non conta nuovamente il rilascio. Non legge password, account o memoria interna del gioco. Non calcola da solo i Perfect+.
+-
+-Il tempo delle richieste di gesto non equivale al momento esatto in cui il gioco riceve il tocco. I dati vanno confrontati con il video. Il timestamp originale viene conservato; il bot lo usa per il tracciamento soltanto quando concorda con l’orologio monotono campionato. Altrimenti usa l’arrivo del fotogramma. Il JSON indica quale orologio ha usato e l’età dell’immagine. I timestamp di produttori diversi non sono universalmente confrontabili: [Image.getTimestamp](https://developer.android.com/reference/android/media/Image#getTimestamp()).
+-
+-Il salvataggio video usa un encoder hardware su un’attività separata e una coda di soli tre fotogrammi. Se l’encoder resta indietro, vengono scartati fotogrammi del video; il riconoscitore non attende che vengano codificati. La copia dei pixel e la registrazione consumano comunque risorse: **l’effetto sui tempi reali deve essere misurato**, non è assunto nullo. Il resoconto conta i fotogrammi scartati e conserva gli intervalli temporali.
+-
+-## Se qualcosa non funziona
+-
+-- Se compare **Preparazione video** e poi un errore, invia lo screenshot del messaggio. Il bot non avvia il livello automaticamente quando la preparazione della registrazione fallisce.
+-- Se il bot si interrompe, attendi un momento per vedere il messaggio e premi **Salva**. Il video può continuare per mostrare la schermata di errore mentre Beatstar è ancora aperto.
+-- Se manca il video, controlla la schermata iniziale di BeatPilot: indica se il salvataggio è ancora in corso oppure il motivo dell’errore.
+-- Se hai cancellato l’ultimo video dalla Galleria, i pulsanti dell’app non possono recuperarlo: esegui una nuova prova.
+-- Se il registratore Samsung viene acceso, può interrompere la cattura del bot. Usa soltanto la registrazione interna di BeatPilot per questa prova. [Ciclo di vita MediaProjection](https://developer.android.com/media/grow/media-projection#resource_recovery).
+-- Se l’accessibilità è bloccata, Android prevede il menu **Impostazioni → App → BeatPilot → Altro → Consenti impostazioni con limitazioni**, poi l’attivazione del servizio. Le etichette Samsung possono variare. [Guida Android](https://support.google.com/android/answer/12623953?hl=it).
+-
+-## Riconoscimento e limiti
+-
+-Il profilo usa le registrazioni dell’utente del 15–17 settembre 2026: tre corsie con centri sulla linea al 20,5%, 50% e 79,5% della larghezza; linea al 72,1% dell’altezza e correzione della prospettiva.
+-
+-Il profilo riconosce tocchi, frecce sinistra/destra/alto/basso, note circolari di cambio stage, coppia iniziale e note lunghe dritte con barra, stelo e cappuccio finale del tipo osservato nel nuovo video. **Le combinazioni pressione + freccia finale non sono implementate**: non sono presenti in questa prova. Altre forme di nota lunga richiederanno esempi reali. Un rilascio non riconosciuto può ancora far fallire il brano; Stop, cambio schermata e perdita della cattura interrompono i contatti.
+-
+-Il programma legge i pixel e invia gesti di accessibilità. Non legge la mappa del brano o il punteggio dal gioco. L’anticipo può essere regolato dopo aver confrontato i risultati; le variazioni di latenza non sono eliminate da un valore fisso.
+-
+-## Verifiche e sorgenti
+-
+-`VERIFICA.txt` distingue test eseguiti, riscontro dell’utente e prove ancora necessarie.
+-
+-Con Java 17 e Python 3.10 o superiore:
++Con Python 3 e Java 17:
+ 
+ ```sh
+ python3 tools/check.py
+ ```
+ 
+-Esegue 6284 controlli: i 6016 precedenti più 268 verifiche sulle code luminose, sui campioni sparsi del JSON e sulla continuità dei contatti. I casi difettosi precedenti restano nelle regressioni. Sono aggiunti 165 frame del nuovo video. Sono conservati i 41 fotogrammi delle note lunghe con tempi originali, i 117 campioni reali precedenti e i casi sintetici di pressione. Non esegue Android.
++**Il comando termina intenzionalmente con esito negativo**, perché i difetti sopra elencati non sono risolti. La compilazione dell'APK richiama questo controllo e si interrompe prima di produrre un pacchetto quando fallisce.
+ 
+-Su Linux con Mesa EGL, verifica aggiuntiva degli shader video e dell’orientamento:
++Il confronto con il nucleo originale della 0.1.9, conservato senza modifiche, si esegue con:
+ 
+ ```sh
+-python3 tools/check_gl.py
++python3 audit/run.py
+ ```
+ 
+-Questo controllo esegue realmente gli shader del registratore su un’immagine di prova. Non verifica MediaCodec o MediaStore su Android.
++Gli esiti sono in `audit/baseline.txt`, `audit/candidate.txt` e `audit/compile-validation.txt`. `audit/changes.patch` mostra le modifiche; `audit/PROVENIENZA.json` identifica la base. I testi della precedente versione sono conservati come documentazione storica in `audit`.
+ 
+-Il replay del video originale richiede ffmpeg/ffprobe e NumPy:
++## Lavoro ancora necessario
+ 
+-```sh
+-python3 tools/replay_video.py /percorso/registrazione.mp4 /percorso/risultati
+-```
++La gestione delle note lunghe deve collegare ogni fine al proprio inizio, mantenere esplicito lo stato di ogni nota e gestire i conflitti senza scartarla silenziosamente. Un rilascio arbitrario alla nota successiva non è stato introdotto: dai controlli attuali non è dimostrato che conservi il punteggio o gestisca le combinazioni pressione + freccia, ancora non implementate.
+ 
+-Il replay con i tempi del resoconto si esegue così:
+-
+-```sh
+-python3 tools/replay_video.py prova.mp4 risultati --timing-report prova.json
+-```
+-
+-`tests/fixtures/holds/bright-caps` contiene i frame della nuova sequenza e la descrizione della regressione. `tests/replay-019` conserva i replay completi con base 0.1.8 e finale 0.1.9, insieme al confronto. I replay delle altre cartelle sono evidenza storica e non sono stati nuovamente eseguiti in questo aggiornamento. Il replay non invia tocchi e non simula un nuovo punteggio; le differenze fra pixel originali e video compresso sono documentate. Video e resoconti integrali non sono inclusi nell’archivio, e questi materiali personali non sono stati pubblicati.
+-
+-## Ricompilare l’APK
+-
+-Per installare l’APK già pronto non serve un computer. Per ricompilarlo servono Java 17, Python e Android SDK con **Platform 35** e **Build-Tools 35.0.0**.
+-
+-```sh
+-python3 tools/build_apk.py
+-```
+-
+-Lo script usa AAPT2, javac, D8, zipalign e apksigner e produce `BeatPilot-0.1.9-holdtails.apk`. Accetta `JAVA_HOME` e `ANDROID_HOME`. La chiave di sviluppo in `signing` consente aggiornamenti compatibili: conservala privata. I file Gradle sono inclusi, ma la pipeline verificata è quella dello script Python.
+-
+-L’app non dichiara il permesso Internet, microfono o accesso generale ai file. Video e resoconto vengono creati tramite MediaStore e sono condivisi soltanto tramite un’azione dell’utente. Il programma non è ufficiale Space Ape.
+-
+-Riferimenti: [MediaCodec](https://developer.android.com/reference/android/media/MediaCodec), [salvataggio dei file multimediali](https://developer.android.com/training/data-storage/shared/media), [gesti di accessibilità](https://developer.android.com/reference/android/accessibilityservice/AccessibilityService).
++La conferma Android di un gesto non dimostra un Perfect+ nel gioco. Non sono stati eseguiti test sul Samsung, né attribuite cause precise alle nuove partite per cui non sono stati forniti dati. La correzione parziale compila con le risorse Android e supera le prove descritte, ma non risolve l'obiettivo complessivo.
+--- a/VERIFICA.txt
++++ b/VERIFICA.txt
+@@ -1,95 +1,15 @@
+-VERIFICA BEATPILOT 0.1.9-HOLDTAILS
+-Data: 17 settembre 2026
++STATO: NON PRONTO PER UN NUOVO RILASCIO
+ 
+-BASE ED EVIDENZA
+-Sorgenti della 0.1.8-contacts consegnata. Nuovi allegati:
+-BeatPilot_20260917_120645_572.mp4 + JSON, samsung SM-S948B/API 36,
+-anticipo 0 ms, linea .721, corsie .205/.5/.795, profilo video attivo.
+-Video 480 x 1040, 4356 frame, circa 75,5 s; 4261 eventi vision.
+-Zero frame scartati per encoder occupato, zero eventi trace persi.
+-277 richieste accettate, 276 completate, una cancellata (batch 277).
+-Nel filmato sono visibili pressioni riuscite e Perfect+; non e' stato
+-conteggiato automaticamente ogni giudizio del brano.
++Base: BeatPilot 0.1.9-holdtails, versionCode 10.
++Correzione parziale: conservazione dello stato durante un'incertezza breve dell'interfaccia, con sospensione dei nuovi invii.
+ 
+-CASO DI ERRORE
+-La HOLD 309 sinistra parte a 71039 ms. La coda compare soltanto in due
+-rilevamenti dal vivo (70899/70916 ms), insufficienti per programmare la fine.
+-La punta luminosa rientra nello stelo bianco e non supera il controllo
+-precedente, che richiedeva un cappuccio meno luminoso dello stelo.
+-Il TAP destro a 71518 ms viene inviato, ma il dito sinistro resta attivo.
+-La nuova HOLD 312 a 71759 ms viene ignorata per la corsia occupata.
+-Il gesto inviato a 71749 ms contiene soltanto una continuazione immobile
+-con willContinue=true. Non genera MotionEvents: il comportamento AOSP
+-corrisponde alla cancellazione ricevuta a 71750 ms. Dopo l'arresto il
+-video mostra FAILED TO HOLD.
++Eseguito:
++- Riproduzione negativa sulla base originale: nota cancellata dopo un fotogramma incerto; hold successivo scartato in ciascuna delle tre corsie; sovrapposizione sintetica freccia/tocco da 40 ms.
++- Verifica della correzione: una nota conservata e pianificata una sola volta all'istante previsto; continuità di un hold; limite temporale dell'incertezza e protezioni di uscita.
++- Suite storiche: superate. Il vecchio caso che accettava la scomparsa di una nota non è più considerato un successo.
++- Controlli di affidabilità complessivi: FALLITI, restano tre casi di hold e un caso sintetico di sovrapposizione. La compilazione distributiva è bloccata da questi esiti.
++- Collegamento delle risorse e compilazione Java di tutti i sorgenti con Android SDK API 35: superati.
+ 
+-MODIFICHE
+-- HoldDetector riconosce anche una punta luminosa piu' larga dello stelo.
+-  Richiede base a T valida, stelo, spalla breve e spazio libero sopra.
+-  Le vecchie punte scure mantengono il riconoscimento precedente.
+-- La nuova osservazione e' contrassegnata recovered. Tracker puo' usarla
+-  per raggiungere il numero minimo di campioni o correggere una previsione
+-  incoerente. Mantiene invece un rilascio gia' stabilito con errore di fit
+-  <= .001 e rapporto fra le ultime due velocita' <= 1.35, entrambe positive.
+-  Questi criteri verificano coerenza visiva, non un Perfect+ del gioco.
+-- Il pianificatore non invia continuazioni completamente stazionarie senza
+-  inizi o rilasci: mantiene lo stato e attende un evento utile. Non inventa
+-  un rilascio nel caso in cui la coda non sia mai riconosciuta.
+-- Conservate le protezioni 0.1.8 per rilascio/inizio simultanei, piu' dita,
+-  callback tardive e note consecutive nella stessa corsia.
+-- Versioni di schermata, resoconto, Gradle e APK aggiornate alla 0.1.9.
++Non eseguito: DEX/firma di un nuovo APK, installazione/esecuzione su Android, misura dei tocchi ricevuti dal gioco, conteggio Perfect+, copertura universale dei tipi di nota.
+ 
+-VERIFICHE ESEGUITE
+-- tools/check.py: 6284 asserzioni, incluse tutte le 6016 precedenti e 268
+-  nuove verifiche di punte luminose, tracciamento e contratti dei contatti.
+-  Parsing di 26 sorgenti Java e 4 XML; nessun permesso Internet.
+-- Prima della modifica il controllo sul frame 071000.gray fallisce per
+-  mancato riconoscimento della punta. Dopo la modifica passa.
+-- Nessuna falsa HOLD sui 117 precedenti campioni reali di altre note/UI.
+-- Test in tre corsie con luminosita' del cappuccio 175/224/225/226/245/255.
+-- Sequenza reale: inizio 71039, rilascio 71507, nuova pressione 71759 ms;
+-  callback ritardate di 0/5/17 ms, nessuna omissione della seconda pressione.
+-- Due osservazioni dal JSON piu' nuovi campioni luminosi dai frame recuperano
+-  una sola coda, rilascio 71507 ms. Una previsione gia' stabile non cambia.
+-- Per la successiva coda provvisoria, gli intervalli incoerenti del JSON
+-  sono riprodotti e la fine viene corretta a 72225 ms senza duplicazione.
+-- Replay completo con base 0.1.8 e versione finale 0.1.9: 4356 frame per
+-  versione, 3966 frame gameplay. Rilevamenti ripetuti: 7362 e 7523.
+-  In entrambe: 301 eventi iniziali, 146 revisioni. Tutte le 447 righe di
+-  previsione sono identiche ignorando gli ID interni, comprese le 294
+-  righe di note diverse da HOLD_END. Il codice precedente e i campioni
+-  delle regressioni su velocita', temi e frecce restano verificati.
+-- Risorse Android, Java e DEX compilati; firma v3 e allineamento verificati.
+-  Manifest: it.dave.beatpilot, versionCode 10, 0.1.9-holdtails,
+-  minSdk 34, targetSdk 35. Certificato identico alla versione precedente.
+-
+-DISTINZIONE FONDAMENTALE E LIMITI
+-La compressione del video cambia alcuni pixel: la 0.1.8 sul replay trova
+-un terzo campione della coda che il JSON dal vivo non contiene. Percio'
+-il replay del solo MP4 non riproduce l'arresto osservato. La regressione
+-usa anche le osservazioni sparse reali; il file fixtures README distingue
+-chiaramente i dati dal vivo dai pixel ricavati dal video.
+-Nessun APK eseguito su telefono/emulatore qui. Nessun nuovo punteggio o
+-Perfect+ misurato. L'assenza di modifiche ai tempi del replay non certifica
+-il 100% su qualsiasi livello. Una coda mai riconosciuta puo' ancora causare
+-una nota persa; il filtro dei gesti vuoti non sostituisce il riconoscimento.
+-Il supporto riguarda le note lunghe dritte osservate. Pressione + freccia
+-finale e varianti non documentate restano da implementare/verificare.
+-Prova successiva: stesso brano, anticipo 0 ms, registrazione interna;
+-verificare il passaggio 71-73 s e il seguito, conservando MP4 e JSON.
+-
+-RIPRODUCIBILITA'
+-tests/HoldTailTests.java e tests/fixtures/holds/bright-caps.
+-tests/replay-019: replay base/finale e confronto. Le altre cartelle replay
+-sono evidenza storica, non nuove esecuzioni di questa versione.
+-LEGGIMI.md: installazione, registrazione e compilazione.
+-Video e JSON integrali non inclusi nell'archivio ne' pubblicati.
+-
+-APK
+-file: BeatPilot-0.1.9-holdtails.apk
+-package: it.dave.beatpilot
+-versionCode: 10
+-versionName: 0.1.9-holdtails
+-SHA-256: f07a67f10da52d6fc380e8ab4fda5c4d8182bd4df7d023344b39968419c29b03
+-Certificato SHA-256:
+-4f5cf9cd13c1a9af3052bcc21d9947e744a2030c216d27a339584e13ca1e1848
++Le nuove segnalazioni dell'utente non hanno nuove registrazioni: i casi sintetici individuano difetti del codice, non provano la causa di ciascuna nuova partita fallita.
+--- a/app/src/main/java/it/dave/beatpilot/CaptureService.java
++++ b/app/src/main/java/it/dave/beatpilot/CaptureService.java
+@@ -53,6 +53,7 @@
+     private final FrameClock frameClock = new FrameClock();
+     private final StartGate startGate = new StartGate();
+     private final GameplayGate gameplayGate = new GameplayGate();
++    private boolean scenePaused;
+     private SettingsStore config;
+     private List<NotePattern> patterns = List.of();
+     private long epoch, started;
+@@ -115,7 +116,7 @@
+             if (touch == null || !touch.isArmed(token)) return;
+             tracker = new Tracker(cfg.videoProfile ? BeatstarDetector.PERSPECTIVE : 0);
+             config = cfg; patterns = templates; epoch = token;
+-            started = SystemClock.uptimeMillis(); startGate.reset(); gameplayGate.reset(); armed = true;
++            started = SystemClock.uptimeMillis(); startGate.reset(); gameplayGate.reset(); scenePaused = false; armed = true;
+         });
+     }
+     void pause() { armed = false; }
+@@ -196,9 +197,19 @@
+                         ? beatstar.startingNotes(frame, config.lanes, config.line) : List.of();
+                 boolean gameplay = !config.videoProfile || gameplayGate.update(hud, initial.size() == 2, time);
+                 if (!gameplay) {
+-                    tracker.reset(); long token = epoch;
++                    long token = epoch;
+                     touch.lastFrame = SystemClock.uptimeMillis();
+                     touch.frameMs = touch.lastFrame - time;
++                    if (gameplayGate.preserveNotes()) {
++                        if (!scenePaused) {
++                            scenePaused = true;
++                            touch.enqueueScenePause(token);
++                            trace(time,"scene_uncertain","predictions_retained;dispatch_paused");
++                        }
++                        traceFrame(time,captured,converted,hud,false,initial);
++                        return;
++                    }
++                    tracker.reset(); scenePaused = false;
+                     if (!startGate.gestureInFlight(touch.lastFrame)) touch.enqueueCancel(token);
+                     if (!config.observeOnly && startGate.update(initial.size() == 2, touch.lastFrame)) {
+                         long begin = SystemClock.uptimeMillis();
+@@ -208,6 +219,11 @@
+                     }
+                     traceFrame(time,captured,converted,hud,false,initial);
+                     return;
++                }
++                if (scenePaused) {
++                    scenePaused = false;
++                    touch.enqueueSceneResume(epoch);
++                    trace(time,"scene_restored","retained_predictions_resumed");
+                 }
+                 List<Detector.Detection> found = config.videoProfile
+                         ? beatstar.detect(frame, config.lanes, config.line, tracker.expectations(captured,config.line))
+--- a/app/src/main/java/it/dave/beatpilot/TouchService.java
++++ b/app/src/main/java/it/dave/beatpilot/TouchService.java
+@@ -45,7 +45,7 @@
+     private WindowManager.LayoutParams panelLayout;
+     private SettingsStore config;
+     private TouchPlanner planner;
+-    private boolean busy, flushAfterGesture, preparing;
++    private boolean busy, flushAfterGesture, preparing, scenePaused;
+     private long gestureSerial;
+     private long notes;
+     private long panelUpdated;
+@@ -144,7 +144,7 @@
+                 if (CaptureService.instance != capture || !capture.ready || !isBeatstarForeground()) {
+                     disarm("Avvio annullato: riapri Beatstar"); capture.finishRecording("Avvio annullato"); return;
+                 }
+-                planner = new TouchPlanner(config.lanes, config.line, config.videoProfile); flushAfterGesture = false;
++                planner = new TouchPlanner(config.lanes, config.line, config.videoProfile); flushAfterGesture = false; scenePaused = false;
+                 preparing = false; armed = true; foregroundOkay = true; lastFrame = SystemClock.uptimeMillis();
+                 capture.arm(token, config, patterns); message = config.observeOnly ? "Osserva" : "Attivo";
+                 trace("bot_start","observe=" + config.observeOnly + ";advance_ms=" + config.advanceMs);
+@@ -162,6 +162,20 @@
+         });
+     }
+     void enqueueCancel(long token) { timing.post(() -> cancelPending(token)); }
++    void enqueueScenePause(long token) {
++        timing.post(() -> {
++            if (!isArmed(token)) return;
++            scenePaused = true;
++            timing.removeCallbacks(tick);
++        });
++    }
++    void enqueueSceneResume(long token) {
++        timing.post(() -> {
++            if (!isArmed(token) || !scenePaused) return;
++            scenePaused = false;
++            if (!busy) { timing.removeCallbacks(tick); timing.post(tick); }
++        });
++    }
+     void accept(long token, List<Tracker.Hit> hits) {
+         if (!isArmed(token)) return;
+         if (!isBeatstarForeground()) { disarm("Fermato: Beatstar non è in primo piano"); return; }
+@@ -176,7 +190,7 @@
+     }
+     void disarm(String reason) {
+         if (armed || preparing) trace("bot_stop",reason);
+-        armed = false; preparing = false; epoch++; message = reason;
++        armed = false; preparing = false; scenePaused = false; epoch++; message = reason;
+         if (CaptureService.instance != null) CaptureService.instance.pause();
+         if (planner != null) planner.clear();
+         timing.removeCallbacks(tick);
+@@ -184,13 +198,14 @@
+     }
+     void cancelPending(long token) {
+         if (!isArmed(token)) return;
++        scenePaused = false;
+         if (planner != null && !planner.idle()) trace("queue_cancelled","scene_not_gameplay");
+         if (planner != null) planner.clear();
+         timing.removeCallbacks(tick);
+         if (busy) flushAfterGesture = true; else releaseHeldPointers();
+     }
+     private void dispatchNext() {
+-        if (busy || !armed || planner == null || config.observeOnly) return;
++        if (busy || !armed || scenePaused || planner == null || config.observeOnly) return;
+         if (!isBeatstarForeground()) { disarm("Fermato: Beatstar non è in primo piano"); return; }
+         long now = SystemClock.uptimeMillis();
+         if (now - lastFrame > 250) { disarm("Fermato: immagini assenti o troppo lente"); return; }
+--- a/app/src/main/java/it/dave/beatpilot/core/GameplayGate.java
++++ b/app/src/main/java/it/dave/beatpilot/core/GameplayGate.java
+@@ -2,15 +2,21 @@
+ 
+ /** Reject brief reappearances of the playing field inside exit/menu animations. */
+ public final class GameplayGate {
++    // Keep predictions across a short uncertain image, while dispatch remains
++    // suspended. This is NOT permission to touch a screen with an absent HUD.
++    private static final long STATE_GRACE_MS = 80;
+     private long missingSince = -1, stableSince = -1, pairSince = -1, previous = -1;
+-    private boolean played, recovering;
++    private boolean played, recovering, preserveNotes;
++
++    public boolean preserveNotes() { return preserveNotes; }
+ 
+     public void reset() {
+         missingSince = stableSince = pairSince = previous = -1;
+-        played = recovering = false;
++        played = recovering = preserveNotes = false;
+     }
+ 
+     public boolean update(boolean hudVisible, boolean openingPairVisible, long now) {
++        preserveNotes = false;
+         if (previous >= 0 && (now < previous || now - previous > 250)) {
+             stableSince = pairSince = -1;
+             if (played) recovering = true;
+@@ -29,6 +35,8 @@
+                     missingSince = -1;
+                 }
+             }
++            preserveNotes = played && !recovering && missingSince >= 0
++                    && now - missingSince < STATE_GRACE_MS;
+             return false;
+         }
+         pairSince = -1;
+--- a/tests/HoldTailTests.java
++++ b/tests/HoldTailTests.java
+@@ -71,8 +71,8 @@
+         planner.add(new Tracker.Hit(309,0,Kind.HOLD_START,71039));
+         List<TouchPlanner.Segment> first=planner.plan(71029,32);
+         expect(first.size()==1 && first.get(0).more,"Setup hold not retained");
+-        // Exact failure shape: another hold in the occupied lane, no known release.
+-        planner.add(new Tracker.Hit(312,0,Kind.HOLD_START,71759));
++        // Test only the harmless no-op. Swallowing another same-lane note is a
++        // separate release-blocking failure, covered by ReliabilityAudit.
+         expect(planner.plan(71749,32).isEmpty(),"Would send an empty stationary continuation rejected by Android");
+         expect(planner.nextTime()==Long.MAX_VALUE && !planner.idle(),"No-op lost or repeatedly scheduled the held pointer");
+         planner.add(new Tracker.Hit(314,1,Kind.TAP,72000));
+--- a/tests/ReliabilityAudit.java
++++ b/tests/ReliabilityAudit.java
+@@ -0,0 +1,122 @@
++import it.dave.beatpilot.core.*;
++import java.util.*;
++
++/** Adversarial behavioral checks against the delivered 0.1.9 core.
++ * No Android runtime, game, screenshot classification, or score measurement.
++ * An expected FAILURE is a known release blocker, not a passing regression.
++ */
++public final class ReliabilityAudit {
++    private static final double LINE = .721;
++    private static int controls, failures;
++    private record Outcome(int starts, long firstStart, long nextTime, boolean idle) {}
++
++    private static boolean preserveNotes(GameplayGate gate) {
++        // The delivered baseline has no retention API. The candidate's capture
++        // branch uses it, so the same probe exercises both source snapshots.
++        try { return (Boolean) gate.getClass().getMethod("preserveNotes").invoke(gate); }
++        catch (NoSuchMethodException oldBaseline) { return false; }
++        catch (ReflectiveOperationException error) { throw new AssertionError(error); }
++    }
++
++    // Reproduces the !gameplay branch of CaptureService.frameAvailable and
++    // cancelPending in TouchService. Vision updates run before scheduler ticks.
++    // The single hidden frame precedes the scheduler wake time (due - 12 ms).
++    private static Outcome oneHiddenFrame(boolean hide) {
++        GameplayGate gate = new GameplayGate();
++        Tracker tracker = new Tracker();
++        TouchPlanner planner = new TouchPlanner(BeatstarDetector.LANES, LINE, true);
++        int starts = 0; long first = -1, busyUntil = 0;
++        boolean paused = false;
++        for (long now = 1000; now <= 1200; now++) {
++            if ((now - 1000) % 20 == 0 && now <= 1140) {
++                boolean gameplay = gate.update(!(hide && now == 1080), false, now);
++                if (!gameplay) {
++                    paused = preserveNotes(gate);
++                    if (!paused) { tracker.reset(); planner.clear(); }
++                } else {
++                    paused = false;
++                    // One perfectly detected tap moves at a constant speed,
++                    // crosses the line at 1100 ms, then leaves the visible area.
++                    double y = LINE + .001 * (now - 1100);
++                    for (Tracker.Hit hit : tracker.update(List.of(
++                            new Detector.Detection(0, Kind.TAP, y, 1, .10)),
++                            now, now, LINE, 0)) planner.add(hit);
++                }
++            }
++            long next = planner.nextTime();
++            if (paused || now < busyUntil || next == Long.MAX_VALUE || GestureTiming.wakeAt(next) > now) continue;
++            for (TouchPlanner.Segment s : planner.plan(now, GestureTiming.HORIZON_MS)) {
++                if (!s.continuation) { starts++; if (first < 0) first = now + s.offset; }
++                busyUntil = Math.max(busyUntil, now + s.offset + s.duration);
++            }
++        }
++        return new Outcome(starts, first, planner.nextTime(), planner.idle());
++    }
++
++    // Same input shape and timings as the previously retained live failure:
++    // hold 309, missing release, new hold 312 on the occupied lane.
++    // Repeat symmetrically: this defect does not depend on lane number/colour.
++    private static Outcome missingTail(int lane, boolean supplyTail) {
++        TouchPlanner planner = new TouchPlanner(BeatstarDetector.LANES, LINE, true);
++        planner.add(new Tracker.Hit(309, lane, Kind.HOLD_START, 71039));
++        List<TouchPlanner.Segment> first = planner.plan(71029, 32);
++        if (first.size() != 1 || !first.get(0).more) throw new AssertionError("Invalid hold setup");
++        if (supplyTail) {
++            planner.add(new Tracker.Hit(310, lane, Kind.HOLD_END, 71507));
++            planner.plan(71495, 32);
++        }
++        planner.add(new Tracker.Hit(312, lane, Kind.HOLD_START, 71759));
++        int starts = 0; long at = -1;
++        for (TouchPlanner.Segment s : planner.plan(71749, 32)) {
++            if (s.noteId == 312 && !s.continuation) { starts++; at = 71749 + s.offset; }
++        }
++        return new Outcome(starts, at, planner.nextTime(), planner.idle());
++    }
++
++    // Synthetic stress case, NOT a claim about spacing in an uploaded song.
++    // A short same-lane gap must not silently consume an already predicted hit.
++    private static Outcome overlappingSwipe() {
++        TouchPlanner planner = new TouchPlanner(BeatstarDetector.LANES, LINE, true);
++        planner.add(new Tracker.Hit(1, 0, Kind.UP, 1000));
++        planner.plan(988, 32);
++        planner.add(new Tracker.Hit(2, 0, Kind.TAP, 1040));
++        int starts = 0; long at = -1;
++        for (TouchPlanner.Segment s : planner.plan(1020, 32)) {
++            if (s.noteId == 2 && !s.continuation) { starts++; at = 1020 + s.offset; }
++        }
++        return new Outcome(starts, at, planner.nextTime(), planner.idle());
++    }
++
++    private static void control(boolean valid, String label) {
++        if (!valid) throw new AssertionError("Invalid positive control: " + label);
++        controls++;
++        System.out.println("CONTROL PASS: " + label);
++    }
++
++    private static void required(Outcome actual, long expectedAt, String label) {
++        boolean okay = actual.starts == 1 && actual.firstStart == expectedAt;
++        if (!okay) failures++;
++        System.out.println((okay ? "PASS: " : "FAIL: ") + label +
++                "; expected one DOWN at " + expectedAt + "; planned starts=" + actual.starts +
++                "; first=" + actual.firstStart + "; next=" +
++                (actual.nextTime == Long.MAX_VALUE ? "NONE" : actual.nextTime) +
++                "; idle=" + actual.idle);
++    }
++
++    public static void main(String[] args) {
++        Outcome visible = oneHiddenFrame(false);
++        control(visible.starts == 1 && visible.firstStart == 1100, "uninterrupted HUD: tap at 1100 ms");
++        required(oneHiddenFrame(true), 1100, "queued tap survives one missing HUD frame");
++        for (int lane = 0; lane < 3; lane++) {
++            Outcome released = missingTail(lane, true);
++            control(released.starts == 1 && released.firstStart == 71759,
++                    "known hold end allows next hold, lane " + (lane + 1));
++            required(missingTail(lane, false), 71759,
++                    "missing hold end silently consumes next hold, lane " + (lane + 1));
++        }
++        required(overlappingSwipe(), 1040, "40 ms same-lane swipe/tap overlap (synthetic)");
++        System.out.println("RESULT: " + controls + " positive controls passed; " + failures +
++                " failed behavior checks. No device execution or Perfect+ score inferred.");
++        if (failures != 0) System.exit(1);
++    }
++}
+--- a/tests/SceneContinuityTests.java
++++ b/tests/SceneContinuityTests.java
+@@ -0,0 +1,88 @@
++import it.dave.beatpilot.core.*;
++import java.util.*;
++
++/** Offline scene-lifecycle checks; no Android runtime or game-score assertion. */
++public final class SceneContinuityTests {
++    private static final double LINE = .721;
++    private static void expect(boolean okay, String reason) {
++        if (!okay) throw new AssertionError(reason);
++    }
++
++    private static void transientFrame() {
++        GameplayGate gate = new GameplayGate();
++        Tracker tracker = new Tracker();
++        TouchPlanner planner = new TouchPlanner(BeatstarDetector.LANES, LINE, true);
++        int starts = 0; long busyUntil = 0, firstStart = -1;
++        boolean paused = false;
++        for (long now = 1000; now <= 1200; now++) {
++            if ((now - 1000) % 20 == 0 && now <= 1140) {
++                boolean visible = gate.update(now != 1080, false, now);
++                if (!visible) {
++                    if (gate.preserveNotes()) paused = true;
++                    else { tracker.reset(); planner.clear(); paused = false; }
++                } else {
++                    paused = false;
++                    for (Tracker.Hit hit : tracker.update(List.of(new Detector.Detection(
++                            0, Kind.TAP, LINE + .001 * (now - 1100), 1, .10)),
++                            now, now, LINE, 0)) planner.add(hit);
++                }
++            }
++            long next = planner.nextTime();
++            if (paused || now < busyUntil || next == Long.MAX_VALUE || GestureTiming.wakeAt(next) > now) continue;
++            for (TouchPlanner.Segment s : planner.plan(now, GestureTiming.HORIZON_MS)) {
++                if (!s.continuation) {
++                    starts++; if (firstStart < 0) firstStart = now + s.offset;
++                }
++                busyUntil = Math.max(busyUntil, now + s.offset + s.duration);
++            }
++        }
++        expect(starts == 1 && firstStart == 1100,
++                "One uncertain HUD frame lost, duplicated, or retimed the predicted note");
++    }
++
++    private static void heldContact() {
++        GameplayGate gate = new GameplayGate();
++        TouchPlanner planner = new TouchPlanner(BeatstarDetector.LANES, LINE, true);
++        planner.add(new Tracker.Hit(1,0,Kind.HOLD_START,1000));
++        List<TouchPlanner.Segment> start = planner.plan(988,32);
++        expect(start.size() == 1 && start.get(0).more, "Invalid hold setup");
++        long contact = start.get(0).id;
++        planner.add(new Tracker.Hit(2,0,Kind.HOLD_END,1400));
++        gate.update(true,false,1000);
++        expect(!gate.update(false,false,1020) && gate.preserveNotes(), "Transient image cleared state");
++        // No call to planner.plan/clear while uncertain: the existing pointer
++        // and already measured tail remain retained, with no speculative tap.
++        expect(planner.nextTime() == 1400, "Uncertain frame lost the release");
++        expect(gate.update(true,false,1040) && !gate.preserveNotes(), "Restored HUD did not resume");
++        List<TouchPlanner.Segment> end = planner.plan(1388,32);
++        expect(end.size() == 1 && end.get(0).id == contact && end.get(0).continuation
++                && !end.get(0).more && 1388 + end.get(0).offset + end.get(0).duration == 1400,
++                "Continuity changed the held pointer or tail timing");
++        expect(planner.idle(), "Completed hold left pending state");
++    }
++
++    private static void boundedUncertainty() {
++        GameplayGate gate = new GameplayGate();
++        expect(!gate.update(false,false,0) && !gate.preserveNotes(), "Initial menu inherited notes");
++        expect(gate.update(true,false,20), "Failed to acquire gameplay");
++        for (long now = 40; now < 120; now += 20)
++            expect(!gate.update(false,false,now) && gate.preserveNotes(), "Grace interval changed");
++        expect(!gate.update(false,false,120) && !gate.preserveNotes(), "Ambiguous scene retained state beyond 80 ms");
++        for (long now = 140; now <= 540; now += 20)
++            expect(!gate.update(false,false,now) && !gate.preserveNotes(), "Exit retained stale notes");
++        for (long now = 560; now < 1160; now += 20)
++            expect(!gate.update(true,false,now) && !gate.preserveNotes(), "Recovery bypassed the exit guard");
++        expect(gate.update(true,false,1160), "Stable gameplay did not return");
++        gate.reset();
++        expect(!gate.preserveNotes(), "New activation inherited uncertainty");
++        gate.update(true,false,1200);
++        expect(!gate.update(false,false,1600) && !gate.preserveNotes(), "Capture gap received a grace interval");
++        gate.reset(); gate.update(true,false,2000);
++        expect(!gate.update(false,false,1990) && !gate.preserveNotes(), "Backwards clock retained old notes");
++    }
++
++    public static void main(String[] args) {
++        transientFrame(); heldContact(); boundedUncertainty();
++        System.out.println("PASS: scene continuity preserves one predicted tap and a held contact; uncertainty and exit remain bounded. No device score inferred.");
++    }
++}
+--- a/tools/build_apk.py
++++ b/tools/build_apk.py
+@@ -5,11 +5,15 @@
+ import pathlib
+ import shutil
+ import subprocess
++import sys
+ import tempfile
+ import xml.etree.ElementTree as ET
+ import zipfile
+ 
+ root = pathlib.Path(__file__).resolve().parents[1]
++# A historical suite can pass while known note-loss regressions still fail.
++# Never package a revision that fails the complete, current behavioral gate.
++subprocess.run([sys.executable, str(root / 'tools/check.py')], cwd=root, check=True)
+ env = os.environ.copy()
+ sdk_candidates = [env.get('ANDROID_HOME'), env.get('ANDROID_SDK_ROOT'),
+                   str(pathlib.Path.home() / 'Android/Sdk'),
+--- a/tools/check.py
++++ b/tools/check.py
+@@ -19,7 +19,8 @@
+                     str(root / 'tests/TimingRegressionTests.java'), str(root / 'tests/RapidNotesTests.java'),
+                     str(root / 'tests/ThemeRegressionTests.java'), str(root / 'tests/PrecisionTests.java'),
+                     str(root / 'tests/HoldTests.java'), str(root / 'tests/ContactTests.java'),
+-                    str(root / 'tests/HoldTailTests.java')], check=True)
++                    str(root / 'tests/HoldTailTests.java'), str(root / 'tests/SceneContinuityTests.java'),
++                    str(root / 'tests/ReliabilityAudit.java')], check=True)
+     subprocess.run([java, '-cp', directory, 'CoreTests'], check=True)
+     subprocess.run([java, '-cp', directory, 'RecordedFrameTests', str(root / 'tests/fixtures')], check=True)
+     subprocess.run([java, '-cp', directory, 'RecordingTests'], check=True)
+@@ -31,6 +32,10 @@
+     subprocess.run([java, '-cp', directory, 'HoldTests', str(root / 'tests/fixtures')], check=True)
+     subprocess.run([java, '-cp', directory, 'ContactTests', str(root / 'tests/fixtures/contacts')], check=True)
+     subprocess.run([java, '-cp', directory, 'HoldTailTests', str(root / 'tests/fixtures/holds/bright-caps')], check=True)
++    subprocess.run([java, '-cp', directory, 'SceneContinuityTests'], check=True)
++    # Keep the known note-loss cases red. Passing the historical suites must
++    # never turn this incomplete working revision into a release candidate.
++    reliability = subprocess.run([java, '-cp', directory, 'ReliabilityAudit'], check=False)
+ subprocess.run([java, str(root / 'tools/SyntaxCheck.java'), *map(str, sources)], check=True)
+ xml_files = sorted((root / 'app/src/main').rglob('*.xml'))
+ for path in xml_files:
+@@ -41,3 +46,5 @@
+ assert 'android.permission.INTERNET' not in [p.get(android_name) for p in manifest.findall('uses-permission')]
+ print('PASS: app declares no Internet permission', flush=True)
+ print('APK build and physical-device tests NOT performed by this check.', flush=True)
++if reliability.returncode:
++    raise SystemExit('BLOCKED: unresolved note-loss cases; this revision is not ready for release.')

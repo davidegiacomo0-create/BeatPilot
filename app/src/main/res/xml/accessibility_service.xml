@@ -1,0 +1,10 @@
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowsChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagRetrieveInteractiveWindows"
+    android:notificationTimeout="0"
+    android:canRetrieveWindowContent="true"
+    android:canPerformGestures="true"
+    android:isAccessibilityTool="false"
+    android:description="@string/accessibility_description"
+    android:settingsActivity="it.dave.beatpilot.MainActivity" />

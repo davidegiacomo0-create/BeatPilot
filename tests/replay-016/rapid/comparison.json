@@ -1,0 +1,13 @@
+{
+  "original_normal_notes": 241,
+  "new_predicted_notes": 241,
+  "matched": 241,
+  "due_change_ms_min_median_max": [
+    -4,
+    -3,
+    -1
+  ],
+  "missing": [],
+  "additional": [],
+  "comparison_method": "Final predictions paired one-to-one by lane/type and nearest due time, maximum 80 ms. This is not a scoring or touch-delivery measurement."
+}

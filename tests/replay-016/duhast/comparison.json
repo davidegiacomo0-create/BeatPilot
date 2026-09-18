@@ -1,0 +1,21 @@
+{
+  "original_normal_notes": 621,
+  "new_predicted_notes": 621,
+  "matched": 621,
+  "due_change_ms_min_median_max": [
+    -10,
+    -3,
+    1
+  ],
+  "missing": [],
+  "additional": [],
+  "comparison_method": "Final predictions paired one-to-one by lane/type and nearest due time, maximum 80 ms. This is not a scoring or touch-delivery measurement.",
+  "visible_crossing_estimate": {
+    "samples": 538,
+    "old_median_absolute_error_ms": 2.2281978702012566,
+    "new_median_absolute_error_ms": 1.0513816642342135,
+    "old_p90_ms": 3.102277059026528,
+    "new_p90_ms": 1.9971608924111934,
+    "note": "Local straight-line interpolation near the visible line, not game scoring. Samples with freeze/jitter or missing crossing excluded. Separate recorded pause tests cover two excluded Du hast cases."
+  }
+}

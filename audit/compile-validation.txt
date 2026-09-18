@@ -1,0 +1,1 @@
+PASS: Android resources linked and all 27 Java sources type-checked with Android API 35. No DEX/signing, device execution, or game score measured.

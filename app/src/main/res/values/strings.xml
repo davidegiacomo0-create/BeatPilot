@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BeatPilot · prototipo</string>
+    <string name="accessibility_description">Esegue tocchi, pressioni e scorrimenti soltanto in Beatstar dopo Avvia. Legge il nome della finestra attiva per fermarsi quando esci. La lettura delle immagini richiede una sessione di condivisione schermo separata. Stop interrompe i tocchi; Chiudi termina anche la cattura. Elaborazione locale, nessun invio in rete.</string>
+    <style name="AppTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#006F63</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#F4F6F5</item>
+    </style>
+</resources>
