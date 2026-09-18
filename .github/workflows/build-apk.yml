@@ -48,7 +48,6 @@ jobs:
           APK=$(find . -type f -name '*.apk' | head -n 1)
           test -n "$APK"
           echo "path=$APK" >> "$GITHUB_OUTPUT"
-          cp "$APK" BeatPilot-0.1.10-reliability.apk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
