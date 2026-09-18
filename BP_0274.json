@@ -1,0 +1,8 @@
+{
+  "video": "BeatPilot_20260917_120645_572.mp4",
+  "report": "BeatPilot_20260917_120645_572.json",
+  "report_sha256": "62789041fa41a66f196f53a464347f2e1454f5f9b4f509d226bc5ad9517c43fa",
+  "app_version": "0.1.8-contacts",
+  "frames": 165,
+  "note": "Encoded video pixels with original capture/ready clocks; not live sensor pixels or new game results."
+}
