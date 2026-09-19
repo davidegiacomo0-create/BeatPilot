@@ -51,6 +51,14 @@ public final class TouchPlanner {
     }
     public void clear() { queue.clear(); contacts.clear(); }
     public boolean idle() { return queue.isEmpty() && contacts.isEmpty(); }
+
+    /** True only while the planner is physically keeping this lane pressed. */
+    public boolean holdingLane(int lane) {
+        for (Contact c : contacts)
+            if (c.lane == lane && c.holding) return true;
+        return false;
+    }
+
     public long nextTime() {
         // willContinue keeps a stationary pointer down between gestures. No repeated
         // keepalive gesture is needed; leave the scheduler available for other notes.

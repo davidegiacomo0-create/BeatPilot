@@ -154,6 +154,10 @@ public final class TouchService extends AccessibilityService {
             }); else begin.run();
         } catch (Exception e) { disarm("Campioni non validi"); Ui.toast(this, e.getMessage()); }
     }
+    boolean holdingLane(int lane) {
+        return planner != null && planner.holdingLane(lane);
+    }
+
     void enqueue(long token, List<Tracker.Hit> hits, long ready) {
         timing.post(() -> {
             if (!isArmed(token)) return;

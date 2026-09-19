@@ -82,6 +82,60 @@ public final class BeatstarDetector {
         return detect(f,lanes,line,List.of());
     }
 
+    public List<Detector.Detection> detect(
+            GrayFrame f, double[] lanes, double line,
+            List<Detector.Detection> expected, boolean[] heldLanes) {
+        List<Detector.Detection> found = detect(f, lanes, line, expected);
+
+        if (heldLanes == null) return found;
+
+        for (int lane = 0; lane < lanes.length && lane < heldLanes.length; lane++) {
+            if (!heldLanes[lane]) continue;
+
+            // Never duplicate a direction already found normally.
+            boolean directional = false;
+            for (Detector.Detection d : found) {
+                if (d.lane == lane &&
+                        (d.kind == Kind.UP || d.kind == Kind.DOWN ||
+                         d.kind == Kind.LEFT || d.kind == Kind.RIGHT)) {
+                    directional = true;
+                    break;
+                }
+            }
+            if (directional) continue;
+
+            Detector.Detection best = null;
+
+            // A hold-tail glyph is joined to the hold body, so normal tile
+            // segmentation can miss it. Probe only physically-held lanes.
+            for (int y0 = 520; y0 <= 700; y0 += 5) {
+                for (int y1 = y0 + 60; y1 <= Math.min(f.height, y0 + 220); y1 += 5) {
+                    Detector.Detection d =
+                            probeClassify(f, lane, lanes[lane], line, y0, y1);
+
+                    if (d == null) continue;
+                    if (d.kind != Kind.UP && d.kind != Kind.DOWN &&
+                        d.kind != Kind.LEFT && d.kind != Kind.RIGHT) continue;
+
+                    if (best == null
+        || d.y < best.y - .010
+        || (Math.abs(d.y - best.y) <= .010 && d.score > best.score))
+    best = d;
+                }
+            }
+
+            // Deliberately lower than the normal .76 threshold, but this path
+            // exists only while the same lane is physically being held.
+            if (best != null && best.score >= .38)
+                found.add(best);
+        }
+
+        found.sort(Comparator
+                .comparingInt((Detector.Detection d) -> d.lane)
+                .thenComparingDouble(d -> -d.y));
+        return found;
+    }
+
     public List<Detector.Detection> detect(GrayFrame f, double[] lanes, double line,
                                             List<Detector.Detection> expected) {
         if (!isGameplay(f)) return List.of();
@@ -258,10 +312,21 @@ public final class BeatstarDetector {
                 double match = 2.0 * intersection / (referenceCount + count);
                 if (match > score) { score = match; kind = ArrowMasks.KINDS[k]; }
             }
-            if (kind == null || score < .76) return null;
+            if (kind == null || (!probeRaw && score < .76)) return null;
         }
         return new Detector.Detection(lane, kind, (y0 + anchor) / f.height, score, h / (double)f.height);
     }
+
+    // Test hook: probes the existing classifier without changing production detection.
+    public Detector.Detection probeClassify(
+            GrayFrame f, int lane, double laneX, double line, int y0, int y1) {
+        boolean old = probeRaw;
+        probeRaw = true;
+        try { return classify(f, lane, laneX, line, y0, y1); }
+        finally { probeRaw = old; }
+    }
+
+    private boolean probeRaw = false;
 
     private int enqueue(int index, int label, int tail) {
         if (closed[index] != 0 && labels[index] == 0) { labels[index] = label; queue[tail++] = index; }

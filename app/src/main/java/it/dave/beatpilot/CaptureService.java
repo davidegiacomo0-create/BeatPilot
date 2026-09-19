@@ -226,7 +226,13 @@ public final class CaptureService extends Service {
                     trace(time,"scene_restored","retained_predictions_resumed");
                 }
                 List<Detector.Detection> found = config.videoProfile
-                        ? beatstar.detect(frame, config.lanes, config.line, tracker.expectations(captured,config.line))
+                        ? beatstar.detect(frame, config.lanes, config.line,
+                        tracker.expectations(captured,config.line),
+                        new boolean[] {
+                                touch.holdingLane(0),
+                                touch.holdingLane(1),
+                                touch.holdingLane(2)
+                        })
                         : detector.detect(frame, patterns, config.lanes,
                         Math.max(.10, config.line - .38), Math.min(.99, config.line + .05), config.threshold);
                 startGate.update(false, time);
