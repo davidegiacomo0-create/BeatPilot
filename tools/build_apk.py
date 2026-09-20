@@ -62,7 +62,7 @@ run([bt / ('aapt2' + exe), 'compile', '--dir', root / 'app/src/main/res', '-o', 
 run([bt / ('aapt2' + exe), 'link', '-o', build / 'unsigned.apk', '-I', android_jar,
      '--manifest', build / 'AndroidManifest.xml', '--java', build / 'generated',
      '--min-sdk-version', '34', '--target-sdk-version', '35', '--version-code', '11',
-     '--version-name', '0.1.11-regressions', build / 'resources.zip'])
+     '--version-name', '0.1.12', build / 'resources.zip'])
 print('Compilo Java e converto in DEX.', flush=True)
 sources = sorted((root / 'app/src/main/java').rglob('*.java')) + sorted((build / 'generated').rglob('*.java'))
 classes = build / 'classes'; classes.mkdir()
@@ -76,7 +76,7 @@ with zipfile.ZipFile(build / 'unsigned.apk', 'a') as archive:
         archive.write(file, file.name, compress_type=zipfile.ZIP_DEFLATED)
 print('Allineo, firmo e verifico l’APK.', flush=True)
 run([bt / ('zipalign' + exe), '-P', '16', '-f', '4', build / 'unsigned.apk', build / 'aligned.apk'])
-output = root / 'BeatPilot-0.1.11-regressions.apk'
+output = root / 'BeatPilot-0.1.12.apk'
 run([java, '-jar', bt / 'lib/apksigner.jar', 'sign', '--ks', key, '--ks-key-alias', 'androiddebugkey',
      '--ks-pass', 'pass:android', '--key-pass', 'pass:android', '--out', output, build / 'aligned.apk'])
 run([java, '-jar', bt / 'lib/apksigner.jar', 'verify', '--verbose', output])
