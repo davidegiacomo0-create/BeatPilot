@@ -33,6 +33,7 @@ public final class TouchService extends AccessibilityService {
     static volatile TouchService instance;
     volatile boolean foregroundOkay;
     volatile long lastFrame, frameMs;
+    volatile long lastImageReceived;
     private volatile boolean armed;
     private volatile long epoch;
     private final Handler main = new Handler(android.os.Looper.getMainLooper());
@@ -68,7 +69,7 @@ public final class TouchService extends AccessibilityService {
             CaptureService capture = CaptureService.instance;
             if ((armed || preparing) && !foregroundOkay) disarm("Fermato: Beatstar non è in primo piano");
             if (!foregroundOkay && capture != null) capture.finishRecording("Uscita da Beatstar");
-            if (armed && SystemClock.uptimeMillis() - lastFrame > 250) disarm("Fermato: immagini assenti o troppo lente");
+            if (armed && SystemClock.uptimeMillis() - lastImageReceived > 250) disarm("Fermato: immagini assenti o troppo lente");
             if (armed && SystemClock.uptimeMillis()-displaySampled >= 1000) {
                 displaySampled = SystemClock.uptimeMillis();
                 android.view.Display display = getSystemService(android.hardware.display.DisplayManager.class)
@@ -145,7 +146,7 @@ public final class TouchService extends AccessibilityService {
                     disarm("Avvio annullato: riapri Beatstar"); capture.finishRecording("Avvio annullato"); return;
                 }
                 planner = new TouchPlanner(config.lanes, config.line, config.videoProfile); flushAfterGesture = false; scenePaused = false;
-                preparing = false; armed = true; foregroundOkay = true; lastFrame = SystemClock.uptimeMillis();
+                preparing = false; armed = true; foregroundOkay = true; lastFrame = SystemClock.uptimeMillis(); lastImageReceived = lastFrame;
                 capture.arm(token, config, patterns); message = config.observeOnly ? "Osserva" : "Attivo";
                 trace("bot_start","observe=" + config.observeOnly + ";advance_ms=" + config.advanceMs);
             };
@@ -212,7 +213,7 @@ public final class TouchService extends AccessibilityService {
         if (busy || !armed || scenePaused || planner == null || config.observeOnly) return;
         if (!isBeatstarForeground()) { disarm("Fermato: Beatstar non è in primo piano"); return; }
         long now = SystemClock.uptimeMillis();
-        if (now - lastFrame > 250) { disarm("Fermato: immagini assenti o troppo lente"); return; }
+        if (now - lastImageReceived > 250) { disarm("Fermato: immagini assenti o troppo lente"); return; }
         long next = planner.nextTime();
         if (next == Long.MAX_VALUE) return;
         if (next > now + GestureTiming.LEAD_MS) { timing.postAtTime(tick, GestureTiming.wakeAt(next)); return; }

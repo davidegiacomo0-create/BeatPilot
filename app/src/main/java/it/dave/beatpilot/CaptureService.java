@@ -180,6 +180,7 @@ public final class CaptureService extends Service {
             if (image == null) return;
             TouchService touch = TouchService.instance;
             if (touch == null || !touch.foregroundOkay || closing) return;
+            touch.lastImageReceived = SystemClock.uptimeMillis();
             long time = SystemClock.uptimeMillis();
             // The finally block records the same pixels after any time-critical vision work.
             try {
