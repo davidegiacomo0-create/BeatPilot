@@ -226,19 +226,20 @@ public final class CaptureService extends Service {
                     touch.enqueueSceneResume(epoch);
                     trace(time,"scene_restored","retained_predictions_resumed");
                 }
+                boolean[] heldLanes = new boolean[] {
+                        touch.holdingLane(0),
+                        touch.holdingLane(1),
+                        touch.holdingLane(2)
+                };
                 List<Detector.Detection> found = config.videoProfile
                         ? beatstar.detect(frame, config.lanes, config.line,
-                        tracker.expectations(captured,config.line),
-                        new boolean[] {
-                                touch.holdingLane(0),
-                                touch.holdingLane(1),
-                                touch.holdingLane(2)
-                        })
+                        tracker.expectations(captured,config.line), heldLanes)
                         : detector.detect(frame, patterns, config.lanes,
                         Math.max(.10, config.line - .38), Math.min(.99, config.line + .05), config.threshold);
                 startGate.update(false, time);
                 for (Detector.Detection d : found) if (d.y < config.line - .05) startGate.gameplayHasNotes();
-                List<Tracker.Hit> hits = tracker.update(found, captured, SystemClock.uptimeMillis(), config.line, config.advanceMs);
+                List<Tracker.Hit> hits = tracker.update(found, captured, SystemClock.uptimeMillis(),
+                        config.line, config.advanceMs, heldLanes);
                 long token = epoch;
                 touch.lastFrame = SystemClock.uptimeMillis();
                 touch.frameMs = touch.lastFrame - time;

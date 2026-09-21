@@ -57,6 +57,11 @@ public final class Tracker {
 
     /** now is image capture time; ready is when analysis has finished, in the same uptime clock. */
     public List<Hit> update(List<Detector.Detection> detections, long now, long ready, double line, double advanceMs) {
+        return update(detections, now, ready, line, advanceMs, null);
+    }
+
+    public List<Hit> update(List<Detector.Detection> detections, long now, long ready,
+            double line, double advanceMs, boolean[] heldLanes) {
         if (lastFrame >= 0 && now <= lastFrame) return List.of();
         if (lastFrame >= 0 && now - lastFrame > 200) tracks.clear();
         if (lastFrame >= 0 && now - lastFrame <= 200)
@@ -69,6 +74,41 @@ public final class Tracker {
         for (Track t : tracks) t.matched = false;
         List<Hit> hits = new ArrayList<>();
         for (Detector.Detection d : detections) {
+            // A directional glyph on a physically-held lane is the terminal
+            // command of that hold. It is already spatially constrained by the
+            // held-tail detector, so do not make it satisfy the normal falling-note
+            // velocity model. Require the same direction on two nearby frames.
+            if (heldLanes != null && d.lane >= 0 && d.lane < heldLanes.length
+                    && heldLanes[d.lane] && directional(d.kind)) {
+                Track tail = null;
+                for (Track t : tracks) {
+                    if (t.lane == d.lane && t.kind == d.kind && !t.fired
+                            && now - t.last <= 90) {
+                        tail = t;
+                        break;
+                    }
+                }
+                if (tail == null) {
+                    tail = new Track();
+                    tail.id = nextId++;
+                    tail.lane = d.lane;
+                    tail.kind = d.kind;
+                    tail.y = d.y;
+                    tail.last = now;
+                    tail.frames = 1;
+                    tracks.add(tail);
+                } else {
+                    tail.frames++;
+                    tail.last = now;
+                    tail.y = d.y;
+                    if (tail.frames >= 2) {
+                        hits.add(new Hit(tail.id, tail.lane, tail.kind, ready, false, false));
+                        tail.fired = true;
+                    }
+                }
+                continue;
+            }
+
             Track best = null;
             double distance = Double.MAX_VALUE;
             for (Track t : tracks) {
@@ -126,6 +166,11 @@ public final class Tracker {
         hits.sort(Comparator.comparingLong(h -> h.at));
         return hits;
     }
+    private static boolean directional(Kind kind) {
+        return kind == Kind.UP || kind == Kind.DOWN
+                || kind == Kind.LEFT || kind == Kind.RIGHT;
+    }
+
     private boolean stableTail(Track t,double line) {
         if (t.samples<3 || t.residual>.001) return false;
         double slow=Double.MAX_VALUE,fast=0;
