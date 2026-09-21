@@ -186,7 +186,7 @@ final class VideoRecorder {
     }
 
     private String reportJson() throws Exception {
-        JSONObject root = new JSONObject(); root.put("schema",1); root.put("app_version", it.dave.beatpilot.BuildConfig.VERSION_NAME);
+        JSONObject root = new JSONObject(); root.put("schema",1); root.put("app_version", "0.1.14");
         root.put("video_name",name + ".mp4"); root.put("device",Build.MANUFACTURER + " " + Build.MODEL);
         root.put("android_sdk",Build.VERSION.SDK_INT); root.put("width",width); root.put("height",height);
         root.put("codec",codecName); root.put("target_fps",FRAME_RATE); root.put("audio",false);
