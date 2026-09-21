@@ -69,7 +69,7 @@ public final class TouchService extends AccessibilityService {
             CaptureService capture = CaptureService.instance;
             if ((armed || preparing) && !foregroundOkay) disarm("Fermato: Beatstar non è in primo piano");
             if (!foregroundOkay && capture != null) capture.finishRecording("Uscita da Beatstar");
-            if (armed && SystemClock.uptimeMillis() - lastImageReceived > 250) disarm("Fermato: immagini assenti o troppo lente");
+            if (armed && SystemClock.uptimeMillis() - lastImageReceived > 1500) disarm("Fermato: immagini assenti o troppo lente");
             if (armed && SystemClock.uptimeMillis()-displaySampled >= 1000) {
                 displaySampled = SystemClock.uptimeMillis();
                 android.view.Display display = getSystemService(android.hardware.display.DisplayManager.class)
@@ -213,7 +213,7 @@ public final class TouchService extends AccessibilityService {
         if (busy || !armed || scenePaused || planner == null || config.observeOnly) return;
         if (!isBeatstarForeground()) { disarm("Fermato: Beatstar non è in primo piano"); return; }
         long now = SystemClock.uptimeMillis();
-        if (now - lastImageReceived > 250) {
+        if (now - lastImageReceived > 1500) {
     long frameGap = now - lastImageReceived;
     trace("frame_watchdog", "frame_gap_ms=" + frameGap
             + ";last_frame_ms=" + lastFrame
