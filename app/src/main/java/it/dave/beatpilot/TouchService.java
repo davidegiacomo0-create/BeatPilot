@@ -213,7 +213,14 @@ public final class TouchService extends AccessibilityService {
         if (busy || !armed || scenePaused || planner == null || config.observeOnly) return;
         if (!isBeatstarForeground()) { disarm("Fermato: Beatstar non è in primo piano"); return; }
         long now = SystemClock.uptimeMillis();
-        if (now - lastImageReceived > 250) { disarm("Fermato: immagini assenti o troppo lente"); return; }
+        if (now - lastImageReceived > 250) {
+    long frameGap = now - lastImageReceived;
+    trace("frame_watchdog", "frame_gap_ms=" + frameGap
+            + ";last_frame_ms=" + lastFrame
+            + ";frame_ms=" + frameMs);
+    disarm("Fermato: immagini assenti o troppo lente (" + frameGap + " ms)");
+    return;
+}
         long next = planner.nextTime();
         if (next == Long.MAX_VALUE) return;
         if (next > now + GestureTiming.LEAD_MS) { timing.postAtTime(tick, GestureTiming.wakeAt(next)); return; }
