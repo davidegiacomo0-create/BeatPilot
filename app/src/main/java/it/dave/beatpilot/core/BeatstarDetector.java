@@ -104,30 +104,11 @@ public final class BeatstarDetector {
             }
             if (directional) continue;
 
-            Detector.Detection best = null;
+            Detector.Detection tail =
+                    detectHeldTail(f, lane, lanes[lane], line);
 
-            // A hold-tail glyph is joined to the hold body, so normal tile
-            // segmentation can miss it. Probe only physically-held lanes.
-            for (int y0 = 520; y0 <= 700; y0 += 5) {
-                for (int y1 = y0 + 60; y1 <= Math.min(f.height, y0 + 220); y1 += 5) {
-                    Detector.Detection d =
-                            probeClassify(f, lane, lanes[lane], line, y0, y1);
-
-                    if (d == null) continue;
-                    if (d.kind != Kind.UP && d.kind != Kind.DOWN &&
-                        d.kind != Kind.LEFT && d.kind != Kind.RIGHT) continue;
-
-                    if (best == null
-        || d.y < best.y - .010
-        || (Math.abs(d.y - best.y) <= .010 && d.score > best.score))
-    best = d;
-                }
-            }
-
-            // Deliberately lower than the normal .76 threshold, but this path
-            // exists only while the same lane is physically being held.
-            if (best != null && best.score >= .38)
-                found.add(best);
+            if (tail != null)
+                found.add(tail);
         }
 
         found.sort(Comparator
@@ -315,6 +296,95 @@ public final class BeatstarDetector {
             if (kind == null || (!probeRaw && score < .76)) return null;
         }
         return new Detector.Detection(lane, kind, (y0 + anchor) / f.height, score, h / (double)f.height);
+    }
+
+    /**
+     * Fast terminal-arrow detector used only while this lane is physically held.
+     *
+     * Beatstar's terminal hold arrow is dark against the bright hold body in the
+     * real device recording, so the normal bright-glyph classifier can miss it.
+     * Inspect one bounded lane ROI instead of probing thousands of overlapping
+     * windows.  Direction comes from the asymmetric dark mass around the glyph
+     * centre; requiring a narrow dark stem plus a strong head keeps this path
+     * specific to an active hold.
+     */
+    private Detector.Detection detectHeldTail(
+            GrayFrame f, int lane, double laneX, double line) {
+        int top = Math.max(1, (int)(f.height * .50));
+        int bottom = Math.min(f.height - 1, (int)(f.height * .72));
+
+        int bestY = -1, bestInk = 0;
+        double bestCenter = 0, bestWidth = 0;
+
+        // Find the strongest dark horizontal arrow-head candidate.
+        for (int y = top; y < bottom; y += 2) {
+            double scale = 1 + PERSPECTIVE * (y / (double)f.height - line);
+            double width = .285 * f.width * scale;
+            double center = (.5 + (laneX - .5) * scale) * f.width;
+
+            int x0 = Math.max(1, (int)(center - width * .32));
+            int x1 = Math.min(f.width - 2, (int)(center + width * .32));
+            int ink = 0;
+            for (int x = x0; x <= x1; x++)
+                if (f.at(x, y) < 105) ink++;
+
+            if (ink > bestInk) {
+                bestInk = ink;
+                bestY = y;
+                bestCenter = center;
+                bestWidth = width;
+            }
+        }
+
+        if (bestY < 0 || bestInk < bestWidth * .20) return null;
+
+        int cx = (int)Math.round(bestCenter);
+        int reach = Math.max(8, (int)Math.round(bestWidth * .23));
+        int half = Math.max(3, (int)Math.round(bestWidth * .055));
+
+        int up = darkMass(f, cx-half, cx+half,
+                Math.max(top, bestY-reach), bestY-3);
+        int down = darkMass(f, cx-half, cx+half,
+                bestY+3, Math.min(bottom, bestY+reach));
+        int left = darkMass(f, Math.max(0, cx-reach), cx-3,
+                bestY-half, bestY+half);
+        int right = darkMass(f, cx+3, Math.min(f.width-1, cx+reach),
+                bestY-half, bestY+half);
+
+        int vertical = Math.max(up, down);
+        int horizontal = Math.max(left, right);
+        Kind kind;
+        int strong, weak;
+
+        if (vertical >= horizontal) {
+            // Arrow head is at bestY; the longer dark shaft lies opposite
+            // the direction in which the finger must travel.
+            if (down > up) { kind = Kind.UP; strong = down; weak = up; }
+            else { kind = Kind.DOWN; strong = up; weak = down; }
+        } else {
+            if (right > left) { kind = Kind.LEFT; strong = right; weak = left; }
+            else { kind = Kind.RIGHT; strong = left; weak = right; }
+        }
+
+        if (strong < Math.max(12, weak * 1.18)) return null;
+
+        double score = Math.min(.95,
+                .55 + (strong - weak) / (double)Math.max(1, strong + weak));
+
+        return new Detector.Detection(
+                lane, kind, (bestY + .5) / f.height, score,
+                (2.0 * reach) / f.height);
+    }
+
+    private int darkMass(GrayFrame f, int x0, int x1, int y0, int y1) {
+        x0 = Math.max(0, x0); x1 = Math.min(f.width - 1, x1);
+        y0 = Math.max(0, y0); y1 = Math.min(f.height - 1, y1);
+        if (x1 < x0 || y1 < y0) return 0;
+        int mass = 0;
+        for (int y = y0; y <= y1; y++)
+            for (int x = x0; x <= x1; x++)
+                if (f.at(x, y) < 105) mass++;
+        return mass;
     }
 
     // Test hook: probes the existing classifier without changing production detection.
